@@ -12,3 +12,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.parallax {
+  /* The image used */
+  background-image: url("http://kb4images.com/images/books-wallpaper/37376905-books-wallpaper.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.white-cloud {
+  position: absolute;
+  width: 100%;
+  min-height: 30px;
+  margin-top: -40px;
+  user-select: none;
+  z-index: 1;
+}
+
+.white-cloud-arriba{
+  position:absolute;
+  width:100%;
+  min-height: 30px;
+  margin-bottom: 30px;
+}
+.flip {
+  transform: rotate(180deg);
+}
+.nube{
+  background-image: url("/src/images/nube.svg");
+  min-height:5vh;
+  width:100%;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height:10vh;
+  margin-bottom: 2%;
+}
+
+.logo{
+  height: 15px;
+  width:15px;
+}
+
+.navbar li{
+  float: right;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menuitem{
+  color:gray
+}
+
+.form{
+  margin:10%;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height:10vh;
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
