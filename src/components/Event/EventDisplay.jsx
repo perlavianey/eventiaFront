@@ -10,7 +10,7 @@ const EventDisplay =({onBack,onChange,onSubmit,loading,handleSelect,handleDate,h
     return(
         <section className="eventPadre">
         <h2 className="title">Creando evento</h2>
-             <form onSubmit={onSubmit} className="newEvent" >
+             <form onSubmit={onSubmit} className="newEvent" encType="multipart/form-data" >
                 
                    Nombre: <br/><Input name="name"
                         type="text"

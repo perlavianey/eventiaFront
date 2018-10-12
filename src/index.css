@@ -1,9 +1,10 @@
+*{
+  font-family: 'Oxygen', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,7 +15,9 @@ code {
 }
 
 .parallax {
-  background-image: url("http://images6.fanpop.com/image/photos/39700000/Books-reading-39791228-2048-2048.jpg");
+  /* background-image: url("http://padresformados.es/wp-content/uploads/2018/04/IMG-20180421-WA0035.jpg"); */
+  background-image: url("https://cdn.urgente24.com/sites/default/files/notas/2017/09/05/feria_0.jpg");
+  
   min-height: 500px; 
   background-attachment: fixed;
   background-position: center;
@@ -22,24 +25,40 @@ code {
   background-size: cover;
 }  
 
-.white-cloud {
+.parallaxUser {
+  /* background-image: url("http://padresformados.es/wp-content/uploads/2018/04/IMG-20180421-WA0035.jpg"); */
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4w_aetPlOh9nz_bnNjiLDDvvjlIfFZdeku6kJIQLeq6NVUGGm");
+  min-height: 400px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:10px;
+  width:28%;
+  padding:1%;
+  border-radius:15px
+}  
+
+.white{
   position: absolute;
   width: 100.23%;
   left: -3px;
-  min-height: 30px;
+  min-height: 1px;
+  user-select: none;
+  z-index: 1;
+  padding: 3px;
+  background-color: #A7D14A;
+}
+
+.whitedown{
+  position: absolute;
+  width: 100.23%;
+  left: -3px;
+  min-height: 1px;
   margin-top: -70px;
   user-select: none;
   z-index: 1;
   padding-bottom: 5%;
-}
-
-.white-cloud-arriba{
-  position: absolute;
-  top: 90px;
-  left: -3px;
-  width: 100.23%;
-  min-height: 10px;
-  margin-bottom: 40px;
 }
 
 .flip {
@@ -62,9 +81,10 @@ code {
 }
 
 .logoImg{
-  width:65%;
+  width:83%;
   max-width:300px;
-  margin-left:30%;
+  margin-left:50%;
+  margin-top:18px;
 }
 
 .navbar ul {
@@ -76,41 +96,12 @@ code {
 .navbar li {
   margin-top:5%;
   margin-bottom:5%;
-  padding:10px;
-  margin-right: 50px;
+  padding:8px;
+  margin-right: 100px;
   border-radius: 5px;
-  background-color: #D17732;
+  background-color: #41A8F8;
+  font-size: 15px;
 }
-
-
-/* .navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  top: 0;
-  width: 100%; 
-  height:15vh;
-  margin-top: 0;
-  margin-bottom: 2%;
-}
-
-.logoImg{
-  width:100%;
-  max-width:300px;
-  margin-left:7%;
-  margin-top:5%;
-}
-
-.navbar ul {
-  list-style: none;
-}
-
-.navbar li{
-  display: inline;
-  text-decoration: none;
-  margin-top:3%;
-  margin-right: 0;
-} */
 
 .menuitem{
   color:white;
@@ -143,25 +134,42 @@ code {
   background:#B28C79;
   text-align: center;
 }
-
-.brown-cloud img{
-  margin-bottom: -10px;
-}
-
 .father{
   margin-top: 5%;
   display:flex;
   flex-direction: row;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
 .eventCard{
-  margin:50px !important;
+  margin-left:30px !important;
+  margin-right:30px !important;
+  margin-bottom:30px !important;
+  margin-top:1% !important;
   text-align: center;
   border:2px dashed rgb(109, 66, 2) !important;
 }
 
 .eventCard img{
+  width:100px;
+  height:200px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userCard{
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-bottom:30px !important;
+  margin-top:1% !important;
+  text-align: center;
+  border:2px dashed rgb(109, 66, 2) !important;
+  border-radius: 5% !important ;
+}
+
+.userCard img{
   width:100px;
   height:200px;
   text-align: center;
@@ -176,16 +184,47 @@ code {
 }
 .title{
   background-color: #A7D14A;
-  padding: 2%;
+  padding: 1.5%;
   width:50%;
   text-align: center;
+  border-radius: 15px;
+}
+
+.titleMain{
+  background-color: #A7D14A;
+  padding: 1%;
+  width:100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.titleMain2{
+  padding:1%;
+  margin-bottom: 2%;
+  background-color: #A7D14A;
+  width:100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.titleMain3{
+  margin-top: 1.5%;
+  margin-bottom: 2%;
+  background-color: #41A8F8;
+  width:100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
 }
 
 .titleLogin{
   background-color: #A7D14A;
-  padding: 2%;
+  padding: 1.5%;
   width:42.5%;
   text-align: center;
+  border-radius: 15px;
 }
 
 .eventPadre{
@@ -197,7 +236,24 @@ code {
 
 }
 
+.eventPadreOrganizer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: rgba(240, 240, 238, 0.993);
+  margin-top:20px;
+}
+
 .login{
   margin-top:5%;
   margin-bottom:15%;
+}
+
+.eventosList{
+  color:black;
+  font-weight: bold;
+  margin-top:20px;
+  padding-left: 5%;
 }

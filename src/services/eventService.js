@@ -36,3 +36,11 @@ export const getEvents = () => {
             return error
         })
 }
+
+export const getEvent = (eventID) => {
+    return axios.get(url + "getEvent")
+        .then(event=>{return event})
+        .catch(error=>{
+            return error
+        })
+}

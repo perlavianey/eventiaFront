@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {withRouter,NavLink} from 'react-router-dom'
 import Routes from './Routes';
-import browncloud from '../src/images/nubecafe.svg'
+
 import './index.css'
 
 import logo from '../src/images/eventiaBook.png'
@@ -11,6 +11,7 @@ class App extends Component{
     render(){
         return(
             <div>
+                <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"/>
                 <nav className="navbar">
                     <a href="/inicio">
                         <img src={logo} alt="logo" className="logoImg"/>
@@ -25,9 +26,9 @@ class App extends Component{
                 <Routes/>
             </div>
             
-            <div className="brown-cloud">
+            {/* <div className="brown-cloud">
                 <img src={browncloud} alt="cloud"/>
-            </div>
+            </div> */}
             <footer className="footer">
                 <p>By Perla Vianey</p>
             </footer>
