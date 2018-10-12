@@ -21,3 +21,18 @@ export const getAllEvents = () => {
             return error
         })
 }
+
+export const getEvents = () => {
+    const token = localStorage.getItem('token')
+    return axios.get(url + "getEvents",{
+        headers:{
+            'Authorization':token
+        }
+    })
+        .then(event=>{
+            return event
+        })
+        .catch(error=>{
+            return error
+        })
+}

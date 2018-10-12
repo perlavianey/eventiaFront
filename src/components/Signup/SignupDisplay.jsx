@@ -5,9 +5,10 @@ const InputGroup = Input.Group;
 
 const SignupDisplay =({onChange,onSubmit,handleSelect,loading})=>{
     return(
-        <div>
-            <form onSubmit={onSubmit} className="form">
-                <h2>Crea tu cuenta</h2>
+        <section className="eventPadre">
+        <h2 className="title">Creando tu cuenta</h2>
+            <form onSubmit={onSubmit} className="newEvent">
+                
                 <p>
                    Nombre: <Input name="name"
                         type="text"
@@ -59,7 +60,7 @@ const SignupDisplay =({onChange,onSubmit,handleSelect,loading})=>{
                 <br/>
                 <Button loading={loading} type="primary" htmlType="submit" >Registrarme</Button>
             </form>
-        </div>
+        </section>
     )
 }
 export default SignupDisplay

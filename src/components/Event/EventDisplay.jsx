@@ -8,78 +8,77 @@ const format = 'HH:mm';
 
 const EventDisplay =({onBack,onChange,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{
     return(
-        <div>
-             <form onSubmit={onSubmit} style={{width:600, margin:"0 auto", padding:20}}>
-                <h2>Creando evento</h2>
-                <p>
-                   Nombre: <Input name="name"
+        <section className="eventPadre">
+        <h2 className="title">Creando evento</h2>
+             <form onSubmit={onSubmit} className="newEvent" >
+                
+                   Nombre: <br/><Input name="name"
                         type="text"
+                        style={{width:'100%'}}
                         required={true}
                         onChange={onChange}
-                        placeholder="Nombre del evento"/>               
-                </p>
-                <p>
-                   Descripción: <TextArea name="description"
+                        placeholder="Nombre del evento"/><br/><br/>
+                
+                   Descripción: <br/><TextArea name="description"
                         placeholder="Descripción del evento." 
+                        style={{width:'100%'}}
                         onChange={onChange}
-                        autosize={{ minRows: 2, maxRows: 6 }} />
-                </p>
+                        autosize={{ minRows: 2, maxRows: 6 }} /><br/><br/>
                 
-                <p>
-                    Imagen:
-                        <input accept="image/*"
+                    Imagen:<br/><input accept="image/*"
+                        style={{width:'100%'}}
                         onChange={onChangeFile} 
-                        type="file" />
-                </p> 
-                <p>
-                    Lugar/Recinto: <Input name="place"
-                        type="text"
-                        onChange={onChange}
-                        placeholder="Lugar del evento"/>
-                </p> 
-                <p>
-                    Ciudad: <Input name="city"
-                        type="text"
-                        onChange={onChange}
-                        placeholder="Ciudad"/>
-                </p> 
-                <p>
-                    Número de localidades: <Input name="availableSeats"
-                        type="number"
-                        onChange={onChange}
-                        placeholder="¿Cuántos boletos se venderán?"/>
-                </p> 
-                <p>
-                    Precio de Entrada: <Input name="priceTicket"
-                        type="text"
-                        onChange={onChange}
-                        placeholder="¿En cuánto se venderán las entradas?"/>
-                </p> 
+                        type="file" /><br/><br/>
                 
-                    Fecha: <DatePicker name="date" onChange={handleDate}
-                    format={dateFormat} />
-                <br/>
-                <br/>
-                    Hora:  <TimePicker name="schedule" onChange={handleHour}
-                    format={format} />
-                <br/>
+                
+                    Lugar/Recinto: <br/><Input name="place"
+                    style={{width:'100%'}}
+                        type="text"
+                        onChange={onChange}
+                        placeholder="Lugar del evento"/><br/><br/>
+               
+                    Ciudad: <br/><Input name="city"
+                        style={{width:'100%'}}
+                        type="text"
+                        onChange={onChange}
+                        placeholder="Ciudad"/><br/><br/>
+                
+                    Número de localidades: <br/><Input name="availableSeats"
+                        type="number"
+                        style={{width:'100%'}}
+                        onChange={onChange}
+                        placeholder="¿Cuántos boletos se venderán?"/><br/><br/>
+                
+                    Precio de Entrada: <br/>
+                    <Input name="priceTicket"
+                        type="text"
+                        style={{width:'100%'}}
+                        onChange={onChange}
+                        placeholder="¿En cuánto se venderán las entradas?"/><br/><br/>
+                
+                    Fecha: <br/><DatePicker name="date" onChange={handleDate}
+                    format={dateFormat} /><br/><br/>
 
-                    Tipo de evento: 
+                    Hora: <br/> <TimePicker name="schedule" onChange={handleHour}
+                    format={format} /><br/><br/>
+
+                    Tipo de evento: <br/>
                     <InputGroup compact>
-                        <Select name="typeEvent" id="typeEvent" style={{width:'50%'}} onChange={handleSelect} defaultValue="Musical">
-                            <Option value="Cultural">Cultural</Option>
-                            <Option value="Musical">Musical</Option>
+                        <Select name="typeEvent" id="typeEvent" style={{width:'50%'}} onChange={handleSelect} defaultValue="Presentación de Libro">
+                            <Option value="Presentación de Libro">Presentación de Libro</Option>
+                            <Option value="Inauguración">Inauguración</Option>
+                            <Option value="Conferencia">Conferencia</Option>
                             <Option value="Exposición">Exposición</Option>
-                            <Option value="Deportivo">Deportivo</Option>
+                            <Option value="Firma de libros">Firma de libros</Option>
                             <Option value="Otro">Otro</Option>                        
                         </Select>
-                    </InputGroup>
-                <br/>
-                <Button loading={loading} type="primary" htmlType="submit" >Crear Evento</Button>
-                
+                    </InputGroup><br/><br/>
+                <Button style={{width:'120px'}} loading={loading} type="primary" htmlType="submit" >Crear Evento</Button> 
             </form>
-            <button type="primary" onClick={onBack}>Cancelar</button>
-        </div>
+            <br/>
+            <Button style={{width:'120px'}}type="primary" onClick={onBack}>Cancelar</Button>
+            
+        </section>
     )
 }
 export default EventDisplay

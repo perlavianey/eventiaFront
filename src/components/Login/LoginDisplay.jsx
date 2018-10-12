@@ -1,12 +1,15 @@
 import React from 'react'
 import { Input,Button } from 'antd'
+import '../../index.css'
 
 const LoginDisplay =({onChange,onSubmit,loading})=>{
     return(
-        <div>
-            <form onSubmit={onSubmit} style={{width:600, margin:"0 auto", padding:20}}>
-                <h2>Inicia sesión</h2>
+        <section className="eventPadre login">
+        <h2 className="titleLogin">Inicia Sesión</h2>
+            <form onSubmit={onSubmit} className="newEvent" style={{width:600, margin:"0 auto", padding:20}}>
+                
                 <p>
+                    Email: <br/>
                 <Input 
                     name="email"
                     type="email"
@@ -15,16 +18,17 @@ const LoginDisplay =({onChange,onSubmit,loading})=>{
                     />    
                 </p> 
                 <p>
+                Contraseña: <br/>
                 <Input 
                     name="password"
                     type="password"
                     onChange={onChange}
                     placeholder="Tu Password" 
-                    />    
+                    />  <br/>  
                 </p>   
                 <Button loading={loading} type="primary" htmlType="submit" >Inicia sesión</Button>
             </form>
-        </div>
+        </section>
     )
 }
 export default LoginDisplay

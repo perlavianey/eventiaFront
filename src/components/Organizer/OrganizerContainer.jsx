@@ -1,23 +1,28 @@
 import React, {Component} from 'react'
 import { message } from 'antd'
+import {getEvents} from '../../services/eventService'
 import {} from '../../services/authService'
-import OrganizerDisplay from './OrganizerDisplay';
-import {getAllEvents} from '../../services/eventService'
+import OrganizerDisplay from './OrganizerDisplay'
+
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
  class OrganizerContainer extends Component{
 
  state = {
-    eventData:{},
+    events:[],
     loading:false
  }
 
  componentWillMount =()=>{
-    getAllEvents()
-    .then(r=>{console.log(r)})
+    getEvents()
+    .then(events => {
+        return this.setState({events:events.data})
+    })
     .catch(e=>{console.log(e)})
  }
+
+ 
 
  redirectNewEvent =()=>{
     this.props.history.push('/newEvent')
@@ -26,6 +31,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         return(
             <OrganizerDisplay 
                 redirectNewEvent={this.redirectNewEvent}
+                events={this.state.events}
             />
         )
     }
