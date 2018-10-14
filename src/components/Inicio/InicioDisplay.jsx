@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../../index.css'
 import { Card } from 'antd';
 import moment from 'moment'
@@ -16,8 +17,20 @@ const InicioDisplay = ({events})=>{
                 <img src={cloud} alt="cloud"/>
             </div> */}
             <div className="white"></div>
-            <div className="parallax"></div>
+            <div className="parallax">
+            <div id="cta" className="inner-container">
+                <h2>En eventia tus eventos de Literatura se vuelven realidad</h2>
+
+                <div id="slogan">
+                <h4>Ve un paso más allá y crea tu evento en cuestión de minutos.</h4>
+                <a className="c-cover__button button button-green" href="/login">Crear evento</a>
+                <h4>Sí, es posible.</h4>
+                </div>
+            </div>
+            
+            </div>
             <div className="white-down"></div>
+            
 
             <div className="titleMain">
                 <h3>Próximos eventos</h3>
@@ -25,15 +38,19 @@ const InicioDisplay = ({events})=>{
 
             <div className="father">
                 {events.map((b, key)=>{
-                return  <Card className="eventCard"
-                    key={key}
-                    hoverable
-                    style={{ width: 240 }}
-                    cover={<img alt="eventPic" src={b.imageURL} />}> 
-                    <Meta
+                return  <Link to={`/event/${b._id}`}>
+                    <Card className="eventCard"
+                        key={key}
+                        hoverable
                         title={b.name}
-                        description={moment(b.date).format('LL')}/>
-                    </Card>
+                        bordered='true'
+                        cover={<img alt="eventPic" src={b.imageURL}/>}> 
+                            <Meta
+                                title={b.place}
+                                description={moment(b.date).format('LL')+`, `+moment(b.schedule).format('LT') + `hrs.`}
+                            />
+                        </Card>
+                </Link>
                 })}        
             </div> 
         </div>

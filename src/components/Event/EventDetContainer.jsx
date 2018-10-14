@@ -2,36 +2,38 @@ import React, {Component} from 'react'
 import { message } from 'antd'
 import {getEvent} from '../../services/eventService'
 import {} from '../../services/authService'
-import EventDetDisplay from './OrganizerDetDisplay'
+import EventDetDisplay from './EventDetDisplay'
 
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
  class EventDetContainer extends Component{
 
- state = {
-    event:{},
-    loading:false
- }
+    state = {
+        event:{},
+        loading:false,
+        show:false
+    }
 
- componentWillMount =()=>{
-    getEvent(/*pasarID_evento*/)
-    .then(event => {
-        return this.setState({event:event.data})
-    })
-    .catch(e=>{console.log(e)})
- }
+    showFormCompra = () =>{
+        this.setState({show:!this.state.show})
+    }
 
- 
+    componentWillMount =()=>{
+        getEvent(this.props.match.params.id)
+        .then(event => {
+            return this.setState({event:event.data})
+        })
+        .catch(e=>{console.log(e)})
+    }
 
-//  redirectNewEvent =()=>{
-//     this.props.history.push('/newEvent')
-//  }
     render(){
+        const {show} = this.state
         return(
             <EventDetDisplay 
-                // redirectNewEvent={this.redirectNewEvent}
+                showFormCompra={this.showFormCompra}
                 event={this.state.event}
+                show={show}
             />
         )
     }

@@ -1,16 +1,22 @@
 import React, {Component} from 'react'
 import { message } from 'antd'
 import {createEvent} from '../../services/eventService'
-import EventDisplay from './EventDisplay';
+import EventNewDisplay from './EventNewDisplay';
+//import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
- class EventContainer extends Component{
+ class EventNewContainer extends Component{
 
  state = {
     eventData:{},
     loading:false
  }
+ 
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(!user){return this.props.history.push('/login/')}
+    }
 
     onChange = (e) => {
         const field = e.target.name
@@ -18,6 +24,9 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         const {eventData} = this.state
         eventData[field] = value
         this.setState({eventData})
+        if (field==='location[address]'){
+            this.determineAdress(e.target.value)
+        }
     }
 
     handleSelect=(value)=>{
@@ -44,7 +53,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     onChangeFile = (e) => {
         const field = "imageURL"
         const {eventData} = this.state
-        eventData[field] = e.target.files[0].name
+        eventData[field] = e.target.files[0]
         this.setState({eventData})
     }
 
@@ -66,7 +75,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         this.setState({loading:true})
         e.preventDefault()
         const {eventData} = this.state
-        createEvent(eventData)
+        createEvent(eventData) //Envía los datos del formulario con axios
         .then(r=>{
             this.props.history.push(`/organizerProfile/`+ user._id)
             return message.success("Evento creado exitosamente")
@@ -79,7 +88,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
 
     render(){
         return(
-            <EventDisplay 
+            <EventNewDisplay 
                 onChange={this.onChange}
                 onSubmit={this.newEvent}
                 loading={this.loading}
@@ -93,4 +102,4 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     }
 }
 
-export default EventContainer
+export default EventNewContainer

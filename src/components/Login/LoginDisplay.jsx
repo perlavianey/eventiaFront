@@ -1,5 +1,6 @@
 import React from 'react'
-import { Input,Button } from 'antd'
+import { Icon,Input,Button } from 'antd'
+import {NavLink} from 'react-router-dom'
 import '../../index.css'
 
 const LoginDisplay =({onChange,onSubmit,loading})=>{
@@ -13,6 +14,7 @@ const LoginDisplay =({onChange,onSubmit,loading})=>{
                 <Input 
                     name="email"
                     type="email"
+                    prefix={<Icon type="mail" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                     onChange={onChange}
                     placeholder="Tu correo" 
                     />    
@@ -22,12 +24,14 @@ const LoginDisplay =({onChange,onSubmit,loading})=>{
                 <Input 
                     name="password"
                     type="password"
+                    prefix={<Icon type="lock" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                     onChange={onChange}
                     placeholder="Tu Password" 
                     />  <br/>  
                 </p>   
                 <Button loading={loading} type="primary" htmlType="submit" >Inicia sesión</Button>
-            </form>
+            </form> <br/>
+            <NavLink to='/signup'>No tengo cuenta</NavLink>
         </section>
     )
 }

@@ -34,7 +34,7 @@ class SignupContainer extends Component{
         }
         signUp(signupData)
             .then(r=>{
-                this.props.history.push('/loginContainer')
+                this.props.history.push('/login')
                 return message.success("Tu cuenta se ha creado.")
             })
             .catch(e=>message.error("Ocurrió un error, por favor intenta nuevamente"))

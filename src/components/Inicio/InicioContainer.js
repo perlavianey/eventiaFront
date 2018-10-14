@@ -6,7 +6,7 @@ import InicioDisplay from './InicioDisplay'
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
-class Signup extends Component{
+class InicioContainer extends Component{
 
     state = {
         events:[],
@@ -33,4 +33,4 @@ class Signup extends Component{
     }
 }
 
-export default Signup
+export default InicioContainer

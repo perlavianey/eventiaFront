@@ -26,7 +26,7 @@ class LoginContainer extends Component{
                 return message.success("Bienvenid@ " + r.data.user.name)
             }
             else{
-                this.props.history.push('/profile')
+                this.props.history.push('/inicio')
                 return message.success("Bienvenid@ " + r.data.user.name)
             }
         })

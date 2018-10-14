@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button,Card, Icon } from 'antd'
-
+import {Link} from 'react-router-dom'
+import moment from 'moment'
+import 'moment/locale/es';
 
 const { Meta } = Card;
 
@@ -32,17 +34,21 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                 <h2 className="eventosList">Eventos Futuros:</h2>
                         <div className="father">
                             {events.map((b, key)=>{
-                            return  <Card className="eventCard"
-                                key={key}
-                                hoverable
-                                style={{ width: 240 }}
-                                cover={<img alt="eventPic" src={b.imageURL} />}> 
+
+                return  <Link to={`/event/org/${b._id}`}>
+                   <Card className="eventCard"
+                            key={key}
+                            hoverable
+                            title={b.name}
+                            bordered='true'
+                            cover={<img alt="eventPic" src={b.imageURL}/>}> 
                                 <Meta
-                                    title={b.name}
-                                    description={b.date}/>
-                                </Card>
-                            })}        
-                        </div> 
+                                    title={b.description}
+                                    description={moment(b.date).format('LL')+`, `+moment(b.schedule).format('LT') + `hrs.`}
+                                />
+                        </Card></Link>
+                        })}        
+                    </div> 
                 </section>
                 <section>
                     <h2>Eventos Pasados:</h2>
