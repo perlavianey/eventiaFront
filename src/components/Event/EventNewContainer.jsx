@@ -16,6 +16,10 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('user'))
         if(!user){return this.props.history.push('/login/')}
+        else if(user.role!=='Organizador'){
+            message.info("Debes ser Organizador de eventos para poder crear eventos.")
+            return this.props.history.push('/inicio')
+        }
     }
 
     onChange = (e) => {

@@ -12,6 +12,11 @@ class LoginContainer extends Component{
         loading:false
     }
 
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(user){return this.props.history.push('/inicio/')}
+    }
+
     login = (e) => {
         this.setState({loading:true})
         e.preventDefault()

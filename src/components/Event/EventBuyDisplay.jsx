@@ -7,6 +7,9 @@ const Step = Steps.Step;
 const steps = [{
     title: 'Boletos',
     content: '',
+  },{
+    title: 'Artículos',
+    content: '',
   }, {
     title: 'Pago',
     content: '',
@@ -73,9 +76,14 @@ const eventBuyDisplay = ({event,current,next,prev,onChange,onSubmit,loading,onBa
                     
 
                     :current===1?
-                        <h1>Hola2</h1>
+                        <h1>Agrega artículos</h1>
+
                     
-                    :<h1>Hola3</h1>
+                    :current===2?
+                    
+                        <h1>¿Cuál será tu forma de pago?</h1>
+                    :
+                    ""
                     }
 
                 </div>

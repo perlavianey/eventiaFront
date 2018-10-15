@@ -5,9 +5,11 @@
   "dependencies": {
     "antd": "^3.10.0",
     "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
     "google-maps-react": "^2.0.2",
     "moment": "^2.22.2",
     "react": "^16.5.2",
+    "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
     "react-places-autocomplete": "^7.2.0",
     "react-router": "^4.3.1",

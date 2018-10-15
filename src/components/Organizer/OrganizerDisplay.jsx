@@ -35,15 +35,14 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                         <div className="father">
                             {events.map((b, key)=>{
 
-                return  <Link to={`/event/org/${b._id}`}>
+                return  <Link to={`/event/org/${b._id}`} key={key}>
                    <Card className="eventCard"
-                            key={key}
                             hoverable
                             title={b.name}
                             bordered='true'
                             cover={<img alt="eventPic" src={b.imageURL}/>}> 
                                 <Meta
-                                    title={b.description}
+                                    title={b.place}
                                     description={moment(b.date).format('LL')+`, `+moment(b.schedule).format('LT') + `hrs.`}
                                 />
                         </Card></Link>

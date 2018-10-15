@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { message } from 'antd'
-import {createEvent} from '../../services/eventService'
+import {createArticle} from '../../services/articleService'
+import {getEvent} from '../../services/eventService'
 import ArticleNewDisplay from './ActicleNewDisplay';
-//import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
@@ -10,87 +10,111 @@ message.config({top: 400, duration: 2, maxCount: 3,});
 
  state = {
     eventData:{},
+    articleData:{},
     loading:false
  }
  
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('user'))
         if(!user){return this.props.history.push('/login/')}
+        else if(user.role!=='Organizador'){
+            message.info("Debes ser Organizador de eventos para poder acceder a un panel de administrador.")
+            return this.props.history.push('/inicio/')
+        }
+        else{
+            getEvent(this.props.match.params.id)
+            .then(event => {
+                if(event.data.manager===user._id){
+                    return this.setState({eventData:event.data})
+                }
+                else{
+                    this.props.history.push('/inicio/')
+                    return message.info("Debes ser el organizador del evento para poder añadirle artículos.")
+                }
+            })
+            .catch(e=>{console.log(e)})
+        }  
     }
+
+
+    onChangeCheckList = (checkedList) => {
+        const {articleData} = this.state
+        articleData['size']=[]
+        for(let i=0; i<checkedList.length;i++){
+            articleData['size'].push(checkedList[i])
+        }
+        this.setState({articleData})
+        console.log(this.state.articleData)
+      }
 
     onChange = (e) => {
         const field = e.target.name
         const value = e.target.value
-        const {eventData} = this.state
-        eventData[field] = value
-        this.setState({eventData})
-        if (field==='location[address]'){
-            this.determineAdress(e.target.value)
-        }
-    }
-
-    handleSelect=(value)=>{
-        const field = 'typeEvent'
-        const {eventData} = this.state
-        eventData[field] = value
-        this.setState({eventData})
-    }
-
-    handleDate=(value)=>{
-        const field = 'date'
-        const {eventData} = this.state
-        eventData[field] = value._d
-        this.setState({eventData})
-    }
-
-    handleHour=(value)=>{
-        const field = 'schedule'
-        const {eventData} = this.state
-        eventData[field] = value._d
-        this.setState({eventData})
+        const {articleData} = this.state
+        articleData[field] = value
+        this.setState({articleData})
     }
 
     onChangeFile = (e) => {
         const field = "imageURL"
-        const {eventData} = this.state
-        eventData[field] = e.target.files[0]
-        this.setState({eventData})
+        const {articleData} = this.state
+        articleData[field] = e.target.files[0]
+        this.setState({articleData})
+    }
+
+    onChangeColor = (e) => {
+        const field = "color"
+        console.log(e.hex)
+        const value = e.hex
+        const {articleData} = this.state
+        articleData[field] = value
+        this.setState({articleData})
     }
 
     goBack = () =>{
         return this.props.history.goBack()
     }
 
-    setCreator = () =>{
-        const field="manager"
+    setEventRef = () =>{
+        const event = this.state.eventData._id
+        const {articleData} = this.state
+        articleData['event'] = event
+        this.setState({articleData})
+    }
+    
+    setVendorRef = () =>{
         const creator = JSON.parse(localStorage.getItem('user'))
-        const {eventData} = this.state
-        eventData[field] = creator._id
-        this.setState({eventData})
+        const {articleData} = this.state
+        articleData['vendor'] = creator._id
+        this.setState({articleData})
     }
 
-    newEvent = (e) =>{
-        this.setCreator()
-        const user = JSON.parse(localStorage.getItem('user'))
+    newArticle = (e) =>{
+        this.setEventRef()
+        this.setVendorRef()
         this.setState({loading:true})
         e.preventDefault()
-        const {eventData} = this.state
-        createEvent(eventData) //Envía los datos del formulario con axios
+        const {articleData} = this.state
+        createArticle(articleData) //Envía los datos del formulario con axios
         .then(r=>{
-            this.props.history.push(`/organizerProfile/`+ user._id)
-            return message.success("Evento creado exitosamente")
+            this.props.history.push(`/event/org/`+ r.data.event)
+            return message.success("Artículo creado exitosamente")
         })
         .catch(e=>{
             this.setState({loading:false})
-            return message.error("Error al crear evento, favor de intentarlo más tarde.")
+            return message.error("Error al crear el artículo, favor de intentarlo más tarde.")
         })
     }
 
     render(){
         return(
             <ArticleNewDisplay 
+                onChangeCheckList={this.onChangeCheckList}
+                onCheckAllChange={this.onCheckAllChange}
+                onChangeColor={this.onChangeColor}
+                event={this.state.eventData}
                 onChange={this.onChange}
-                onSubmit={this.newEvent}
+                onSubmit={this.newArticle}
                 loading={this.loading}
                 handleSelect={this.handleSelect}
                 onChangeFile={this.onChangeFile}

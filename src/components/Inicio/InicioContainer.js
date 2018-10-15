@@ -23,10 +23,12 @@ class InicioContainer extends Component{
 
     render(){
         const {events} = this.state
+        const user = JSON.parse(localStorage.getItem('user'))
         return(
             <div>
               <InicioDisplay 
                 events={events}
+                user={user}
               />
             </div>
         )

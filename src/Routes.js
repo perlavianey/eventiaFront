@@ -9,7 +9,7 @@ import OrganizerContainer from './components/Organizer/OrganizerContainer'
 import EventBuyContainer from './components/Event/EventBuyContainer'
 import EventDetOrgContainer from './components/Event/EventDetOrgContainer'
 import ArticleNewContainer from './components/Article/ArticleNewContainer'
-
+import ArticleDetOrgContainer from './components/Article/ArticleDetOrgContainer'
 const Routes = () => {
     return(
         <Switch>
@@ -22,6 +22,7 @@ const Routes = () => {
             <Route exact path="/event/buy/:id" component={EventBuyContainer}/> 
             <Route exact path="/event/org/:id" component={EventDetOrgContainer}/> 
             <Route exact path="/event/:id/newarticle" component={ArticleNewContainer}/>
+            <Route exact path="/article/org/:id" component={ArticleDetOrgContainer}/>
         </Switch>
     )
 }

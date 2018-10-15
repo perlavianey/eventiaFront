@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input,Button,Select,DatePicker,TimePicker,Icon, message } from 'antd'
+import { Input,Button,Select,DatePicker,TimePicker,Icon } from 'antd'
 const Option = Select.Option;
 const InputGroup = Input.Group;
 const { TextArea } = Input;
@@ -48,7 +48,7 @@ const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handl
                         style={{width:'100%'}}
                         type="text"
                         prefix={<Icon type="environment" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                        onChange={determineAddress}
+                        onChange={onChange}
                         placeholder="Lugar del evento"/><br/><br/>
 
                     Número de localidades: <br/><Input name="availableSeats"

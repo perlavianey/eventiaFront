@@ -6,7 +6,7 @@ import moment from 'moment'
 
 const { Meta } = Card;
 
-const InicioDisplay = ({events})=>{ 
+const InicioDisplay = ({events,user})=>{ 
     return(
         <div className="contentInicio">
             {/* <div className="white-cloud-arriba flip">
@@ -23,7 +23,12 @@ const InicioDisplay = ({events})=>{
 
                 <div id="slogan">
                 <h4>Ve un paso más allá y crea tu evento en cuestión de minutos.</h4>
+                {!user? 
                 <a className="c-cover__button button button-green" href="/login">Crear evento</a>
+                : 
+                <a className="c-cover__button button button-green" href="/newEvent">Crear evento</a>   
+            }
+                
                 <h4>Sí, es posible.</h4>
                 </div>
             </div>
@@ -38,15 +43,15 @@ const InicioDisplay = ({events})=>{
 
             <div className="father">
                 {events.map((b, key)=>{
-                return  <Link to={`/event/${b._id}`}>
+                return  <Link to={`/event/${b._id}`} key={key}>
                     <Card className="eventCard"
-                        key={key}
                         hoverable
                         title={b.name}
                         bordered='true'
                         cover={<img alt="eventPic" src={b.imageURL}/>}> 
                             <Meta
                                 title={b.place}
+                                //description={b.date+`, `+ b.schedule + `hrs.`}
                                 description={moment(b.date).format('LL')+`, `+moment(b.schedule).format('LT') + `hrs.`}
                             />
                         </Card>

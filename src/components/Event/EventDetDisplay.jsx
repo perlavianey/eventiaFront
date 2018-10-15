@@ -20,7 +20,7 @@ const EventDetDisplay = ({event})=>{
                 <div className="detail">
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-map-marked"></i>
+                            <i className="fas fa-map-marked"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>¿Dónde?</b></h4>
@@ -32,7 +32,7 @@ const EventDetDisplay = ({event})=>{
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i className="fas fa-calendar-alt"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>¿Cuándo?</b></h4>
@@ -44,7 +44,7 @@ const EventDetDisplay = ({event})=>{
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-book-reader"></i>
+                            <i className="fas fa-book-reader"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Descripción del evento:</b></h4>
@@ -56,7 +56,7 @@ const EventDetDisplay = ({event})=>{
 
                     <div className="descDetail">
                         <div className="icon">
-                        <i class="fas fa-money-bill-alt"></i>
+                        <i className="fas fa-money-bill-alt"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Costo de Entrada:</b></h4>
@@ -75,7 +75,7 @@ const EventDetDisplay = ({event})=>{
                     </div>
                 </div>
             </section>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"></link>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossOrigin="anonymous"></link>
         </div>
     )
 }

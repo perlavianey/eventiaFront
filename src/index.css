@@ -380,6 +380,13 @@ code {
   padding: 3%;
   border:5px dotted black;
 }
+
+.newArticle{
+  width:40%;
+  padding: 3%;
+  border:5px dotted black;
+}
+
 .title{
   background-color: #A7D14A;
   padding: 1.5%;
@@ -502,8 +509,9 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgba(240, 240, 238, 0.993);
-  width: 15%;
-  height: 300px;
+  background-color: white;
+  width: 20%;
+  height: 200px;
   margin-top:80px;
+  border-radius: 10px;
 }

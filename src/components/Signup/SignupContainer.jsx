@@ -12,6 +12,11 @@ class SignupContainer extends Component{
         loading:false
     }
 
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(user){return this.props.history.push('/inicio/')}
+    }
+
     onChange = (e) => {
         const field = e.target.name
         const value = e.target.value

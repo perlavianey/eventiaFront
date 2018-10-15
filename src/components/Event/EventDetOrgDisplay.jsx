@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../index.css'
 import {Link} from 'react-router-dom'
-import { Button,Input,Icon,Select,DatePicker,TimePicker} from 'antd';
+import { Button,Input,Icon,Select,DatePicker,TimePicker,Card} from 'antd';
 import moment from 'moment'
 import 'moment/locale/es';
 const { TextArea } = Input;
@@ -9,19 +9,22 @@ const Option = Select.Option;
 const InputGroup = Input.Group;
 const dateFormat = 'DD/MM/YYYY';
 const format = 'HH:mm';
+const { Meta } = Card;
 
-const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{ 
+
+const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onBack,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{ 
     return(
         <div className="contentInicio">          
             <div className="white"></div><br/> <br/>
             <div className="panel"><h1>Panel de Administrador</h1></div>
             <section className="eventDetail">
                 <div className="detail">
-                <h2><b>Detalles de tu evento:</b></h2><br/>
+                <h2><b><ins>Detalles de tu evento:</ins></b></h2><br/>
                 
-                <div className="descDetail">
+                <form onSubmit={onSubmit}>
+                    <div className="descDetail">
                         <div className="icon">
-                        <i class="fas fa-smile"></i>
+                        <i className="fas fa-smile"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Nombre:</b></h4>
@@ -34,12 +37,11 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
                                 value={event.name}/><br/><br/>
                         </div>
                     </div> 
-                    
                     <hr className="stylehr"></hr>
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-camera-retro"></i>
+                            <i className="fas fa-camera-retro"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Imagen:</b></h4>
@@ -55,7 +57,7 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-book"></i>
+                            <i className="fas fa-book"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Tipo de evento:</b></h4>
@@ -76,13 +78,14 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-map-marked"></i>
+                            <i className="fas fa-map-marked"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Lugar:</b></h4>
-                            <Input name="location[address]" id="address"
+                            <Input name="place"
                                 style={{width:'100%'}}
                                 type="text"
+                                onChange={onChange}
                                 prefix={<Icon type="environment" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                                 value={event.place}/><br/><br/>
                         </div>
@@ -92,7 +95,7 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i className="fas fa-calendar-alt"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Fecha y hora:</b></h4>
@@ -107,7 +110,7 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
 
                     <div className="descDetail">
                         <div className="icon">
-                        <i class="fas fa-money-bill-alt"></i>
+                        <i className="fas fa-money-bill-alt"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Costo de Entrada:</b></h4>
@@ -120,11 +123,11 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
                         </div>
                     </div>
 
-                     <hr className="stylehr"></hr>
+                    <hr className="stylehr"></hr>
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-chair"></i>
+                            <i className="fas fa-chair"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Número de localidades:</b></h4>
@@ -138,10 +141,10 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
                     </div> 
 
                     <hr className="stylehr"></hr>
-                    
+
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-book-reader"></i>
+                            <i className="fas fa-book-reader"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Descripción del evento:</b></h4>
@@ -158,7 +161,7 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-sticky-note"></i>
+                            <i className="fas fa-sticky-note"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Fecha de creación</b></h4>
@@ -166,11 +169,10 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
                         </div>
                     </div>
 
-                    <hr className="stylehr"></hr>
-
+                        <hr className="stylehr"></hr>
                     <div className="descDetail">
                         <div className="icon">
-                            <i class="fas fa-pen-square"></i>
+                            <i className="fas fa-pen-square"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Última modificación:</b></h4>
@@ -178,20 +180,58 @@ const EventDetOrgDisplay = ({event,onChange,onBack,onSubmit,loading,handleSelect
                         </div>
                     </div>
 
-                    <hr className="stylehr"></hr>
-                    
-                </div>
-                <div className="adminEvento">
-                
+                    <hr className="stylehr"></hr><br/><br/>
                     <div className="cbButton">
-                        <Button style={{width:'150px'}}type="primary">Guardar Cambios</Button>
+                    <Button style={{width:'150px'}}type="primary" htmlType="submit">Guardar Cambios</Button>
                     </div>
+                </form>
+            </div>  
+            <div className="adminEvento">
                     <div className="cbButton">
-                        <Button style={{width:'150px'}}type="primary"><Link to={`/event/${event._id}/newarticle`}>Agregar Artículos</Link></Button>
+                        <Icon type="delete" onClick={showConfirm} style={{fontSize:'40px', color:'#D1302B'}} theme="filled"></Icon>
+                        <p>Eliminar Evento</p>
+                        {/* <Button style={{width:'150px'}}type="primary" onClick={showConfirm}>Eliminar evento</Button> */}
+                    </div>
+
+                    <div className="cbButton">
+                        <Link to={`/event/${event._id}/newarticle`}><Icon type="plus-circle" style={{fontSize:'40px', color:'green'}} theme="filled"></Icon></Link>
+                        <p>Añadir Artículos</p>
+                        {/* <Button style={{width:'150px'}}type="primary"><Link to={`/event/${event._id}/newarticle`}>Agregar Artículos</Link></Button> */}
                     </div>
                 </div>
             </section>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"></link>
+        <hr/>
+
+        <section className="eventPadreOrganizer">
+            <h2 className="eventosList"><ins>Status de ventas de entradas:</ins></h2><br/>
+            <canvas width="200" height="200" id="canvas"></canvas>
+        </section>
+
+        <hr/>
+        <section className="eventPadreOrganizer">
+            <section><br/>
+            <h2 style={{textAlign:'center'}}><b><ins>Articulos de este evento:</ins></b></h2>
+            <div className="father">
+                {articles.map((b, key)=>{
+
+            return  <Link to={`/article/org/${b._id}`} key={key}>
+                <Card className="eventCard"
+                        hoverable
+                        title={b.name}
+                        bordered='true'
+                        cover={<img alt="articlePic" src={b.imageURL}/>}> 
+                            <Meta
+                                title={b.sold}
+                                description={`Stock: `+ b.stock +`  Price:`+ b.price}
+                            />
+                    </Card></Link>
+                    })}        
+                </div> 
+            </section>
+            </section>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+            <script src="./chartSoldEvent.js"></script>            
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossOrigin="anonymous"></link>
         </div>
     )
 }
