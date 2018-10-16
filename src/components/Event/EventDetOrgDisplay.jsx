@@ -188,16 +188,19 @@ const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onBack,onSub
             </div>  
             <div className="adminEvento">
                     <div className="cbButton">
-                        <Icon type="delete" onClick={showConfirm} style={{fontSize:'40px', color:'#D1302B'}} theme="filled"></Icon>
+                        <Icon type="delete" onClick={showConfirm} style={{fontSize:'40px', color:'#D1302B', cursor:"pointer"}} theme="filled"></Icon>
                         <p>Eliminar Evento</p>
-                        {/* <Button style={{width:'150px'}}type="primary" onClick={showConfirm}>Eliminar evento</Button> */}
-                    </div>
+                    </div><br/>
 
                     <div className="cbButton">
-                        <Link to={`/event/${event._id}/newarticle`}><Icon type="plus-circle" style={{fontSize:'40px', color:'green'}} theme="filled"></Icon></Link>
+                        <Link to={`/event/${event._id}/newarticle`}><Icon type="plus-circle" style={{fontSize:'40px', color:'green', cursor:"pointer"}} theme="filled"></Icon></Link>
                         <p>Añadir Artículos</p>
-                        {/* <Button style={{width:'150px'}}type="primary"><Link to={`/event/${event._id}/newarticle`}>Agregar Artículos</Link></Button> */}
-                    </div>
+                    </div><br/>
+
+                    <div className="cbButton">
+                        <Link to={`/organizerProfile/${event.manager}`}><Icon type="left-circle" style={{fontSize:'40px', color:'navy', cursor:"pointer"}}  theme="filled" /></Link>
+                        <p>Ir atrás</p>
+                    </div><br/>
                 </div>
             </section>
         <hr/>
@@ -222,11 +225,11 @@ const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onBack,onSub
                         cover={<img alt="articlePic" src={b.imageURL}/>}> 
                             <Meta
                                 title={b.sold}
-                                description={`Stock: `+ b.stock +`  Price:`+ b.price}
+                                description={`Piezas a vender: `+ b.stock +` - Precio: $`+ b.price +` MXN`}
                             />
                     </Card></Link>
                     })}        
-                </div> 
+            </div> 
             </section>
             </section>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>

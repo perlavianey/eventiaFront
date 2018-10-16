@@ -11,6 +11,8 @@ message.config({top: 400, duration: 2, maxCount: 3,});
 
  state = {
     events:[],
+    eventsPasados:[],
+    eventsFuturos:[],
     loading:false
  }
 

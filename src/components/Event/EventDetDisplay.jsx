@@ -2,7 +2,6 @@ import React from 'react'
 import '../../index.css'
 import {Link} from 'react-router-dom'
 import { Button } from 'antd';
-import moment from 'moment'
 import 'moment/locale/es';
 
 const EventDetDisplay = ({event})=>{ 
@@ -36,7 +35,7 @@ const EventDetDisplay = ({event})=>{
                         </div>
                         <div className="infoDetail">
                             <h4><b>¿Cuándo?</b></h4>
-                            <h5>{moment(event.date).format('LL')+`, `+moment(event.schedule).format('LT') + ` hrs.`}</h5>
+                            <h5>{event.date+`, `+event.schedule + ` hrs.`}</h5>
                         </div>
                     </div> 
 

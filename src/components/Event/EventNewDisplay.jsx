@@ -9,7 +9,10 @@ const format = 'HH:mm';
 const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{
     
     return(
+        <div>
+            <div className="white"></div><br/> <br/>
         <section className="eventPadre">
+        
         <h2 className="title">Creando evento</h2>
              <form onSubmit={onSubmit} className="newEvent" >
                 
@@ -44,7 +47,7 @@ const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handl
                         onChange={onChangeFile} 
                         type="file"/><br/><br/>
                 
-                    Lugar/Recinto: <br/><Input name="location[address]" id="address"
+                    Lugar/Recinto: <br/><Input name="place" id="address"
                         style={{width:'100%'}}
                         type="text"
                         prefix={<Icon type="environment" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
@@ -73,15 +76,20 @@ const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handl
 
                     Hora: <br/> <TimePicker name="schedule" onChange={handleHour}
                     format={format} /><br/><br/>
+
                 <div className="btnCreateEvent">
                     <Button style={{width:'120px'}} loading={loading} type="primary" htmlType="submit" >Crear Evento</Button> 
                 </div>
             </form>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8o46KiOg4PdiJ8WCRXC9KyFfE4d-g0Qw&libraries=places"></script>
             <br/>
-            <Button style={{width:'120px'}}type="primary" onClick={onBack}>Cancelar</Button><br/><br/>
             
+            <div className="cbButton">
+                <Icon type="left-circle" onClick={onBack} style={{fontSize:'40px', color:'navy', cursor:"pointer"}}  theme="filled" />
+                <p>Ir atrás</p>
+            </div><br/>
         </section>
+        </div>
     )
 }
 export default EventNewDisplay

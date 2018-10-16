@@ -57,6 +57,18 @@ export const getAllEvents = () => {
     })
 }
 
+//Trae todos los eventos filtrados por tipo
+export const getEventsFilter = (typeEvent) => {
+    return axios.get(url + `getEventsFilter/${typeEvent}` )
+    .then(events=>{
+        return events
+    })
+    .catch(error=>{
+        return error
+    })
+}
+
+
 //Actualiza un evento por ID
 export const updateEvent = (eventID,updatedEventData) => {
     const form = new FormData()

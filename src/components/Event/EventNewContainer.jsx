@@ -28,9 +28,6 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         const {eventData} = this.state
         eventData[field] = value
         this.setState({eventData})
-        if (field==='location[address]'){
-            this.determineAdress(e.target.value)
-        }
     }
 
     handleSelect=(value)=>{
@@ -40,17 +37,17 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         this.setState({eventData})
     }
 
-    handleDate=(value)=>{
+    handleDate=(value, valuestr)=>{
         const field = 'date'
         const {eventData} = this.state
-        eventData[field] = value._d
+        eventData[field] = valuestr
         this.setState({eventData})
     }
 
-    handleHour=(value)=>{
+    handleHour=(value,hrstr)=>{
         const field = 'schedule'
         const {eventData} = this.state
-        eventData[field] = value._d
+        eventData[field] = hrstr
         this.setState({eventData})
     }
 

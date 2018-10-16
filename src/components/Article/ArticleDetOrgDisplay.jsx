@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../index.css'
+import {Link} from 'react-router-dom'
 import { Button,Input,Icon} from 'antd';
 import moment from 'moment'
 import 'moment/locale/es';
@@ -35,7 +36,7 @@ const ArticleDetOrgDisplay = ({showConfirm,article,onChange,onBack,onSubmit,load
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i className="fas fa-book-reader"></i>
+                            <i className="fas fa-info-circle"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Descripción del artículo:</b></h4>
@@ -68,7 +69,7 @@ const ArticleDetOrgDisplay = ({showConfirm,article,onChange,onBack,onSubmit,load
 
                     <div className="descDetail">
                         <div className="icon">
-                            <i className="fas fa-chair"></i>
+                            <i className="fas fa-sort-numeric-down"></i>
                         </div>
                         <div className="infoDetail">
                             <h4><b>Número de piezas a ofertar:</b></h4>
@@ -129,10 +130,14 @@ const ArticleDetOrgDisplay = ({showConfirm,article,onChange,onBack,onSubmit,load
             </div>  
             <div className="adminEvento">
                     <div className="cbButton">
-                        <Icon type="delete" onClick={showConfirm} style={{fontSize:'40px', color:'#D1302B'}} theme="filled"></Icon>
+                        <Icon type="delete" onClick={showConfirm} style={{fontSize:'40px', color:'#D1302B', cursor:"pointer"}} theme="filled"></Icon>
                         <p>Eliminar Artículo</p>
                         {/* <Button style={{width:'150px'}}type="primary" onClick={showConfirm}>Eliminar evento</Button> */}
                     </div>
+                    <div className="cbButton">
+                        <Link to={`/event/org/${article.event}`}><Icon type="left-circle" style={{fontSize:'40px', color:'navy', cursor:"pointer"}}  theme="filled" /></Link>
+                        <p>Ir atrás</p>
+                    </div><br/>
                 </div>
             </section>
         <hr/>

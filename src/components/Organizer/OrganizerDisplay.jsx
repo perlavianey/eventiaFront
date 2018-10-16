@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button,Card, Icon } from 'antd'
 import {Link} from 'react-router-dom'
-import moment from 'moment'
 import 'moment/locale/es';
 
 const { Meta } = Card;
@@ -31,26 +30,21 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
             <Button onClick={redirectNewEvent} type="primary" icon="plus-square"> Agregar Evento</Button>
             <section className="eventPadreOrganizer">
                 <section>
-                <h2 className="eventosList">Eventos Futuros:</h2>
-                        <div className="father">
-                            {events.map((b, key)=>{
-
-                return  <Link to={`/event/org/${b._id}`} key={key}>
-                   <Card className="eventCard"
+                    <div className="father">
+                        {events.map((b, key)=>{
+                        return  <Link to={`/event/org/${b._id}`} key={key}>
+                        <Card className="eventCard"
                             hoverable
                             title={b.name}
                             bordered='true'
                             cover={<img alt="eventPic" src={b.imageURL}/>}> 
                                 <Meta
                                     title={b.place}
-                                    description={moment(b.date).format('LL')+`, `+moment(b.schedule).format('LT') + `hrs.`}
+                                    description={b.date+`, `+ b.schedule + `hrs.`}
                                 />
                         </Card></Link>
                         })}        
                     </div> 
-                </section>
-                <section>
-                    <h2>Eventos Pasados:</h2>
                 </section>
             </section>
         </section>

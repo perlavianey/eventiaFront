@@ -33,7 +33,7 @@ const confirm = Modal.confirm;
                         this.setState({articles:articles.data})
                     })
                     .catch(e=>{console.log(e)})
-                        }
+                }
                 else{
                     this.props.history.push('/inicio/')
                     return message.info("Debes ser el organizador del evento para poder editarlo.")

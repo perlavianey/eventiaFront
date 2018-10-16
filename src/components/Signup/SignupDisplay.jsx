@@ -6,6 +6,8 @@ const InputGroup = Input.Group;
 
 const SignupDisplay =({onChange,onSubmit,handleSelect,loading})=>{
     return(
+        <div>
+        <div className="white"></div><br></br>
         <section className="eventPadre">
         <h2 className="title">Creando tu cuenta</h2>
             <form onSubmit={onSubmit} className="newEvent">
@@ -71,6 +73,7 @@ const SignupDisplay =({onChange,onSubmit,handleSelect,loading})=>{
             </form><br/>
             <NavLink to='/login'>Ya tengo cuenta</NavLink> <br/> <br/>
         </section>
+    </div>
     )
 }
 export default SignupDisplay

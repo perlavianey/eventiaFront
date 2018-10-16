@@ -26,9 +26,12 @@ code {
   top: 17vh;
   background-color: rgba(30, 39, 4, 0.658);
   width:65%;
-  height: 80%;
+  height: 30%;
   border-radius: 30px;
   padding: 20px;
+  position: absolute;
+  margin-top: 8%;
+  z-index: 1;
 } 
 
 #cta h2 {
@@ -90,15 +93,16 @@ code {
 
 .parallax {
   /* background-image: url("http://padresformados.es/wp-content/uploads/2018/04/IMG-20180421-WA0035.jpg"); */
-  background-image: url("https://cdn.urgente24.com/sites/default/files/notas/2017/09/05/feria_0.jpg");
-  
-  min-height: 500px; 
+  /* background-image: url("https://cdn.urgente24.com/sites/default/files/notas/2017/09/05/feria_0.jpg"); */
+  background-color: black;
+  min-height: 300px; 
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
+
 }  
 
 .parallaxUser {
@@ -161,8 +165,8 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height:15vh;
-  margin-top: 0;
+  height:12vh;
+  margin-top: 0; 
 }
 
 .logoImg{
@@ -179,9 +183,9 @@ code {
 }
 
 .navbar li {
-  margin-top:5%;
-  margin-bottom:5%;
-  padding:12px;
+  margin-top:0%;
+  margin-bottom:0%;
+  padding:9px 20px;
   margin-right: 20px;
   border-radius: 5px;
   background-color: #41A8F8;
@@ -191,7 +195,6 @@ code {
 .navbar li:hover {
   color:white;
   background-color: rgb(109, 68, 7);
-
 }
 
 .navbar ul:nth-child(2) {
@@ -220,14 +223,17 @@ code {
  
 .footer {
   padding:2%;
-  color: white;
+  color: black;
   font-weight: bold;
   left:0px;
   bottom:0px;
-  height:5vh;
   width:100%;
-  background:#B28C79;
+  background:rgb(146, 184, 64) ;
   text-align: center;
+  margin-top:50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .father{
   margin-top: 5%;
@@ -300,7 +306,6 @@ code {
 
 .stylehr {
   border-top: 1px dotted #8c8b8b;
-  
 }
 
 .eventTitle {
@@ -340,17 +345,29 @@ code {
   margin-bottom:30px !important;
   margin-top:1% !important;
   text-align: center;
-  width:25vw !important;
+  width:20vw !important;
+  border:2px solid rgba(0, 0, 0, 0.473) !important;
 }
+
 .ant-card-meta-title {
   white-space: normal !important;
+  text-align: center !important;  
+}
+
+.ant-card-head{
+  border-radius: 1px !important;
+  background-color: rgba(49, 31, 3, 0.849) !important;
+  color:white !important;
 }
 
 .ant-card-head-title{
   white-space: normal !important;
+  margin:0 !important;
+  display: block !important;
+  font-weight: bold !important;
 }
 .eventCard img{
-  width:70%;
+  width:100%;
   height:200px;
   text-align: center;
   margin-left: auto;
@@ -438,7 +455,6 @@ code {
   align-items: center;
   width: 100%;
   justify-content: center
-
 }
 
 .eventPadreOrganizer{
@@ -448,12 +464,12 @@ code {
   width: 100%;
   justify-content: center;
   background-color: rgba(240, 240, 238, 0.993);
-  margin-top:20px;
+
 }
 
 .login{
   margin-top:5%;
-  margin-bottom:15%;
+  margin-bottom:12%;
 }
 
 .eventosList{
@@ -466,6 +482,11 @@ code {
 .sesion{
   display: flex;
   flex-direction: row;
+  margin-right: 80px;
+}
+
+.iconSesion:hover{
+  color: rgb(109, 68, 7)
 }
 
 .steps-content {
@@ -514,4 +535,55 @@ code {
   height: 200px;
   margin-top:80px;
   border-radius: 10px;
+}
+
+#filter{
+  font-size: 20px;
+  width:'80%';
+  padding:3px;
+  font-stretch: expanded;
+}
+
+.filtro{
+  background-color: #abdaad63;
+  padding:2px;
+  color:black;
+  width:100%;
+  margin:0 auto;
+  padding-top:15px;
+  padding-top:30px;
+}
+.ant-select-selection{
+  border-radius: 30px !important;
+  background-color: rgba(250, 250, 250, 0.849) !important;
+  padding-left:20px !important;
+  font-weight: bold !important;
+}
+
+.tituloInicio>h4{
+  font-size: 23px;
+}
+
+.tituloInicio{
+  background-color: #A7D14A;
+  padding: 5px;
+  padding-bottom: 0.5px;
+  width:100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.newCompra{
+  font-size:18px;
+}
+
+#cto { 
+  text-align: right;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+#noBoletos{
+  text-align: right;
 }

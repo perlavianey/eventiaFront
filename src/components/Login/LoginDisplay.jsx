@@ -5,6 +5,9 @@ import '../../index.css'
 
 const LoginDisplay =({onChange,onSubmit,loading})=>{
     return(
+        <div>
+            <div className="white"></div>
+            <br></br>
         <section className="eventPadre login">
         <h2 className="titleLogin">Inicia Sesión</h2>
             <form onSubmit={onSubmit} className="newEvent" style={{width:600, margin:"0 auto", padding:20}}>
@@ -33,6 +36,7 @@ const LoginDisplay =({onChange,onSubmit,loading})=>{
             </form> <br/>
             <NavLink to='/signup'>No tengo cuenta</NavLink>
         </section>
+    </div>
     )
 }
 export default LoginDisplay

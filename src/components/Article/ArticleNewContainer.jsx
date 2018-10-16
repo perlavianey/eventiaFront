@@ -36,13 +36,9 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         }  
     }
 
-
     onChangeCheckList = (checkedList) => {
         const {articleData} = this.state
-        articleData['size']=[]
-        for(let i=0; i<checkedList.length;i++){
-            articleData['size'].push(checkedList[i])
-        }
+        articleData['size']=checkedList
         this.setState({articleData})
         console.log(this.state.articleData)
       }
