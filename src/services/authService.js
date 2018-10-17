@@ -21,3 +21,11 @@ export const login = (loginData) => {
             return e
         })
 }
+
+export const getUser = (userID) => {
+    return axios.get(url + `getUserData/`+ userID)
+    .then(user=>{return user})
+    .catch(error=>{
+        return error
+    })
+}

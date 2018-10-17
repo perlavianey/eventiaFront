@@ -124,7 +124,7 @@ const ArticleDetOrgDisplay = ({showConfirm,article,onChange,onBack,onSubmit,load
 
                     <hr className="stylehr"></hr><br/><br/>
                     <div className="cbButton">
-                    <Button style={{width:'150px'}}type="primary" htmlType="submit">Guardar Cambios</Button>
+                    <Button style={{width:'150px'}}type="primary" className="btnEventia2" htmlType="submit">Guardar Cambios</Button>
                     </div>
                 </form>
             </div>  

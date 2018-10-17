@@ -16,18 +16,18 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                 key="1"
                 hoverable
                 style={{ width: 300,height:360}}
-                cover={<img alt="eventPic" src={organizadorData.photoURL}  style={{width:'50%', height:'50%', padding:'5%'}} />}> 
-                <hr/><br/>
+                cover={<img alt="eventPic" src={organizadorData.photoURL}  style={{width:'50%', height:'50%', paddingTop:'5%'}} />}> 
+                <hr/>
                 <Meta
                     title={organizadorData.name +`  `+organizadorData.lastName} //{organizadorData.lastName}
                     description={organizadorData.email}/> <br/> <br/>
-                    <Button><Icon type="edit" theme="filled" style={{ fontSize: '20px', color: 'navy' }}/></Button>
+                    <Link to={`/organizerProfile/edit/`+organizadorData._id}><Icon type="edit" theme="filled" style={{ fontSize: '20px', color: 'navy' }}/></Link>
                 </Card>
             </section>
             <br/>
             
             <h2 className="titleMain3">Mis eventos organizados</h2>
-            <Button onClick={redirectNewEvent} type="primary" icon="plus-square"> Agregar Evento</Button>
+            <Button onClick={redirectNewEvent} className="btnEventia" icon="plus-square"> Agregar Evento</Button>
             <section className="eventPadreOrganizer">
                 <section>
                     <div className="father">
@@ -47,6 +47,9 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                     </div> 
                 </section>
             </section>
+            <h2 className="titleMain3">Mis compras en eventia</h2>
+            <Link to={`/myProfile/`+ (JSON.parse(localStorage.getItem('user'))._id)}><Button className="btnEventia" icon="plus-square"> Ir a mis Compras</Button></Link>
+ 
         </section>
         
     )        

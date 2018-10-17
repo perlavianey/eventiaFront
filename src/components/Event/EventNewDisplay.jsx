@@ -1,21 +1,20 @@
 import React from 'react'
 import { Input,Button,Select,DatePicker,TimePicker,Icon } from 'antd'
+import Autocomplete from 'react-google-autocomplete';
 const Option = Select.Option;
 const InputGroup = Input.Group;
 const { TextArea } = Input;
 const dateFormat = 'DD/MM/YYYY';
 const format = 'HH:mm';
 
-const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{
+const EventNewDisplay =({onPlaceSelect,onBack,onChange,onSubmit,loading,handleSelect,handleDate,handleHour,onChangeFile})=>{
     
     return(
         <div>
             <div className="white"></div><br/> <br/>
-        <section className="eventPadre">
-        
-        <h2 className="title">Creando evento</h2>
-             <form onSubmit={onSubmit} className="newEvent" >
-                
+            <section className="eventPadre">
+            <h2 className="title">Creando evento</h2>
+            <form onSubmit={onSubmit} className="newEvent" >
                 Tipo de evento: <br/>
                     <InputGroup compact>
                         <Select name="typeEvent" id="typeEvent" style={{width:'50%'}} onChange={handleSelect} defaultValue="Presentación de Libro">
@@ -47,12 +46,14 @@ const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handl
                         onChange={onChangeFile} 
                         type="file"/><br/><br/>
                 
-                    Lugar/Recinto: <br/><Input name="place" id="address"
-                        style={{width:'100%'}}
-                        type="text"
+                    Lugar/Recinto: <br/><Autocomplete
+                        style={{width: '100%'}}
+                        placeholder="Lugar del evento"
+                        name="place" id="address"
                         prefix={<Icon type="environment" theme="filled" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                        onChange={onChange}
-                        placeholder="Lugar del evento"/><br/><br/>
+                        onPlaceSelected={onPlaceSelect}
+                        types={['establishment']}
+                        componentRestrictions={{country: "mx"}}/><br/><br/>
 
                     Número de localidades: <br/><Input name="availableSeats"
                         type="number"
@@ -61,35 +62,30 @@ const EventNewDisplay =({determineAddress,onBack,onChange,onSubmit,loading,handl
                         onChange={onChange}
                         placeholder="¿Cuántos boletos se venderán?"/><br/><br/>
                 
-                    Precio de Entrada: <br/>
-                    <Input name="priceTicket"
+                    Precio de Entrada: <br/><Input name="priceTicket"
                         type="text"
                         style={{width:'100%'}}
                         prefix={<Icon type="dollar" theme="outlined" style={{ color: 'rgba(0,0,0,.25)' }} />} 
                         onChange={onChange}
                         placeholder="¿En cuánto se venderán las entradas?"/><br/><br/>
                 
-                    Fecha: <br/>
-                    <DatePicker name="date" 
-                    onChange={handleDate}
-                    format={dateFormat} /><br/><br/>
+                    Fecha: <br/><DatePicker name="date" 
+                        onChange={handleDate}
+                        format={dateFormat} /><br/><br/>
 
                     Hora: <br/> <TimePicker name="schedule" onChange={handleHour}
-                    format={format} /><br/><br/>
+                        format={format} /><br/><br/>
 
                 <div className="btnCreateEvent">
-                    <Button style={{width:'120px'}} loading={loading} type="primary" htmlType="submit" >Crear Evento</Button> 
+                    <Button style={{width:'120px'}} className="btnEventia2" loading={loading} type="primary" htmlType="submit" >Crear Evento</Button> 
                 </div>
-            </form>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8o46KiOg4PdiJ8WCRXC9KyFfE4d-g0Qw&libraries=places"></script>
-            <br/>
-            
+            </form>         
             <div className="cbButton">
                 <Icon type="left-circle" onClick={onBack} style={{fontSize:'40px', color:'navy', cursor:"pointer"}}  theme="filled" />
                 <p>Ir atrás</p>
             </div><br/>
         </section>
-        </div>
-    )
-}
+    </div>
+    )}
+    
 export default EventNewDisplay

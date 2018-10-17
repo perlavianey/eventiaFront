@@ -32,11 +32,11 @@ class App extends Component{
                             </section>
                            :<section className="sesion">
                                 {user.role==='Organizador'?
-                                    <Tooltip placement="left" title={`Mi Perfil `+user.name}>
+                                    <Tooltip placement="left" title={user.name +` - Mi Perfil`}>
                                         <Link to={`/organizerProfile/`+ user._id}><i className="fas fa-book-reader iconSesion" style={{fontSize:"40px",marginRight:"50px"}}/></Link>
                                     </Tooltip>
                                     : 
-                                    <Tooltip placement="left" title={`Mi Perfil `+user.name}>
+                                    <Tooltip placement="left" title={user.name +` - Mi Perfil`}>
                                     <Link to={`/myProfile/`+ user._id}><i className="fas fa-book-reader iconSesion" style={{fontSize:"40px",marginRight:"50px"}}/></Link>
                                     </Tooltip>
                                 }

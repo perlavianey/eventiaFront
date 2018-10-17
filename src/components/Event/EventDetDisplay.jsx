@@ -1,11 +1,13 @@
 import React from 'react'
 import '../../index.css'
 import {Link} from 'react-router-dom'
-import { Button } from 'antd';
+import { Button,Card,Tooltip} from 'antd';
 import 'moment/locale/es';
-
-const EventDetDisplay = ({event})=>{ 
+const { Meta } = Card;
+const text = <span>Deber iniciar sesión para comprar entradas</span>;
+const EventDetDisplay = ({event,articles})=>{ 
     return(
+        <div>
         <div className="contentInicio">          
             <div className="white"></div>
             <div className="imgMainDetail">
@@ -23,7 +25,7 @@ const EventDetDisplay = ({event})=>{
                         </div>
                         <div className="infoDetail">
                             <h4><b>¿Dónde?</b></h4>
-                            <h5>{event.place + `, `+event.city}</h5>
+                            <h5>{event.place}</h5>
                         </div>
                     </div> 
 
@@ -66,15 +68,44 @@ const EventDetDisplay = ({event})=>{
                     
                 </div>
                 <div className="compraBoletos">
-                    <div className="cbButton">
-                        <Button style={{width:'120px'}}type="primary"><Link to={`/event/buy/${event._id}`}>¡Quiero Asistir!</Link></Button>
-                    </div>
-                    <div className="cbMapa">
-
-                    </div>
+                    {localStorage.getItem('user')?
+                        <div className="cbButton">
+                            <Button style={{width:'130px'}} className="btnEventia2"  type="primary"><Link to={`/event/buy/${event._id}`}>¡Quiero Asistir!</Link></Button>
+                        </div>
+                        :
+                        <div className="cbButton">
+                            <Tooltip placement="top" title={text}>
+                                <Button ghost disabled style={{width:'130px',color:"white"}} className="btnEventia2"  type="primary"><Link to={`/event/buy/${event._id}`}>¡Quiero Asistir!</Link></Button>
+                            </Tooltip>
+                        </div>
+                    }
                 </div>
             </section>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossOrigin="anonymous"></link>
+        </div>
+
+        
+            {articles.length>0?
+            <div>
+            <h2 style={{textAlign:'center'}}><b><ins>Artículos a la venta con este evento:</ins></b></h2>
+            <div className="fatherArticle">
+                {articles.map((b, key)=>{
+                return <Card className="eventCard"
+                        key={key}
+                        hoverable
+                        title={b.name}
+                        bordered='true'
+                        cover={<img alt="articlePic" src={b.imageURL}/>}> 
+                            <Meta
+                                title={b.sold}
+                                description={`Precio: $`+ b.price +` MXN`}
+                            />
+                    </Card>
+                })}        
+                </div>
+                </div>
+            :""
+            }
         </div>
     )
 }

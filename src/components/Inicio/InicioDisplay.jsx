@@ -11,18 +11,18 @@ const InicioDisplay = ({events,user,handleSelect})=>{
             <div className="white"></div>
             <div className="parallax">
                 <div id="cta" className="inner-container">
-                    <h2>En eventia tus eventos de Literatura se vuelven realidad</h2>
+                    <h2>En eventia tus eventos de Literatura se vuelven realidad.</h2>
                     <div id="slogan">
-                        <h4>Ve un paso más allá y crea tu evento en cuestión de minutos.</h4>
+                        <h4>Crea tu evento en cuestión de minutos.</h4>
                         {!user? 
                         <Link className="c-cover__button button button-green" to="/login">Crear evento</Link>
                         : 
                         <Link className="c-cover__button button button-green" to="/newEvent">Crear evento</Link>   
                         }
-                        <h4>Sí, es posible.</h4>
+                        
                     </div>
                 </div>
-                <div style={{overflow:"hidden", height:"60vh", backgroundSize:"cover"}}>
+                <div style={{overflow:"hidden", height:"70vh", backgroundSize:"cover"}}>
                     <video muted autoPlay loop id="myVideo" style={{width:"100vw"}}>
                         <source src="https://res.cloudinary.com/perlavianey/video/upload/v1539623077/eventia/Feria_del_Libro_de_Guadalajara._Somos_Grandes_Momentos_online-video-cutter.com.mp4"></source>
                     </video>
@@ -32,7 +32,7 @@ const InicioDisplay = ({events,user,handleSelect})=>{
             <div className="white"></div>
             <div className="filtro">
                 <div style={{textAlign:"center"}}>
-                    <span id="filter"> <b>Tipo de evento:    </b></span>
+                    <span id="filter"> <b>Filtrar eventos por:    </b></span>
                     <Select name="typeEvent" id="filter" className="filterSelect" onChange={handleSelect} defaultValue="Todos" style={{width:"30%"}}>
                         <Option value="Todos">Todos</Option>
                         <Option value="Presentación de Libro">Presentación de Libro</Option>
@@ -45,7 +45,7 @@ const InicioDisplay = ({events,user,handleSelect})=>{
                 </div><br/>
             </div>
             <div className="tituloInicio">
-                <h4><b>¡No te los pierdas!</b></h4>
+                <h4><b>¡Explora nuestros eventos!</b></h4>
             </div>
             <div className="father">
                 {events.map((b, key)=>{

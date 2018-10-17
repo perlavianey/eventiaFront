@@ -34,12 +34,7 @@ export const getArticle = (articleID) => {
 
 //Trae artículos del evento mostrado
 export const getArticles = (eventID) => {
-    const token = localStorage.getItem('token')
-    return axios.get(url + "getArticles/" + eventID,{
-        headers:{
-            'Authorization':token
-        }
-    })
+    return axios.get(url + "getArticles/" + eventID)
     .then(articles=>{
         return articles
     })

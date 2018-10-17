@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { message } from 'antd'
 import {createEvent} from '../../services/eventService'
 import EventNewDisplay from './EventNewDisplay';
-//import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
@@ -58,6 +57,14 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         this.setState({eventData})
     }
 
+    onPlaceSelect = (value)=>{
+        const p=value.name + ', '+value.formatted_address
+        const field = "place"
+        const {eventData} = this.state
+        eventData[field] = p
+        this.setState({eventData})
+    }
+
     goBack = () =>{
         return this.props.history.goBack()
     }
@@ -98,6 +105,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
                 handleDate={this.handleDate}
                 handleHour={this.handleHour}
                 onBack={this.goBack}
+                onPlaceSelect={this.onPlaceSelect}
             />
         )
     }

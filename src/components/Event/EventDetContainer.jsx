@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { message } from 'antd'
 import {getEvent} from '../../services/eventService'
+import {getArticles} from '../../services/articleService'
 import {} from '../../services/authService'
 import EventDetDisplay from './EventDetDisplay'
 
@@ -12,7 +13,8 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     state = {
         event:{},
         loading:false,
-        show:false
+        show:false,
+        articles:[]
     }
 
     showFormCompra = () =>{
@@ -22,7 +24,12 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     componentWillMount =()=>{
         getEvent(this.props.match.params.id)
         .then(event => {
-            return this.setState({event:event.data})
+            this.setState({event:event.data})
+            getArticles(this.props.match.params.id)
+            .then(articles => {
+                this.setState({articles:articles.data})
+            })
+            .catch(e=>{console.log(e)})
         })
         .catch(e=>{console.log(e)})
     }
@@ -34,6 +41,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
                 showFormCompra={this.showFormCompra}
                 event={this.state.event}
                 show={show}
+                articles={this.state.articles}
             />
         )
     }

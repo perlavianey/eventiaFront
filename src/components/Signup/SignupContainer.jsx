@@ -3,7 +3,7 @@ import { message } from 'antd'
 import {signUp} from '../../services/authService'
 import SignupDisplay from './SignupDisplay';
 
-message.config({top: 400, duration: 2, maxCount: 3,});
+message.config({top: 100, duration: 2, maxCount: 3,});
 
 class SignupContainer extends Component{
 
@@ -31,11 +31,23 @@ class SignupContainer extends Component{
         this.setState({signupData})
     }
 
+    onPlaceSelect = (value)=>{
+        const p=value.name
+        const field = "city"
+        console.log(p)
+        const {signupData} = this.state
+        signupData[field] = p
+        this.setState({signupData})
+    }
+
     createUser = (e) => {
         e.preventDefault()
         const {signupData} = this.state
         if(signupData.password !== signupData.password2) {
             return message.error('Los passwords no coinciden');
+        }
+        if(signupData.password.length<5){
+            return message.error('Contraseña demasiado débil.');
         }
         signUp(signupData)
             .then(r=>{
@@ -53,6 +65,7 @@ class SignupContainer extends Component{
                     onChange={this.onChange}
                     handleSelect={this.handleSelect}
                     loading={this.loading}
+                    onPlaceSelect={this.onPlaceSelect}
                 />
             </div>
         )

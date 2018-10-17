@@ -31,10 +31,14 @@ const LoginDisplay =({onChange,onSubmit,loading})=>{
                     onChange={onChange}
                     placeholder="Tu Password" 
                     />  <br/>  
-                </p>   
-                <Button loading={loading} type="primary" htmlType="submit" >Inicia sesión</Button>
+                </p> 
+                <div className="cbButton">
+                    <Button loading={loading} type="primary" htmlType="submit" className="btnEventia2">Inicia sesión</Button>    
+                </div>  
+                
             </form> <br/>
-            <NavLink to='/signup'>No tengo cuenta</NavLink>
+
+            <NavLink to='/signup' style={{marginBottom:"28px"}}>No tengo cuenta</NavLink>
         </section>
     </div>
     )

@@ -56,11 +56,15 @@ const ArticleNewDisplay =({onBack,onChangeColor,onChangeCheckList,onChange,onSub
                         placeholder="¿En cuánto se venderá cada artículo?"/><br/><br/>
                     <br/><br/>
                 <div className="btnCreateEvent">
-                    <Button style={{width:'120px'}} loading={loading} type="primary" htmlType="submit" >Crear Artículo</Button> 
+                    <Button style={{width:'120px'}} loading={loading} type="primary" className="btnEventia2" htmlType="submit" >Crear Artículo</Button> 
                 </div>
             </form>
             <br/>
-            <Button style={{width:'120px'}}type="primary" onClick={onBack}>Cancelar</Button><br/><br/>
+            <div className="cbButton">
+                <Icon type="left-circle" onClick={onBack} style={{fontSize:'40px', color:'navy', cursor:"pointer"}}  theme="filled" />
+                <p>Ir atrás</p>
+            </div><br/>
+            
             <script src="jscolor.js"></script>
         </section>
     </div>

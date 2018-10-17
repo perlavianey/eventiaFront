@@ -1,7 +1,7 @@
-/* 
-Color azul: #41A8F8
-Color café: rgb(109, 68, 7)
-Color verde: #A7D14A
+/* COLORES:
+Azul: #41A8F8
+Café: rgb(109, 68, 7)
+Verde: #A7D14A
 */
 
 *{
@@ -20,17 +20,33 @@ code {
     monospace;
 }
 
+/* Botones Eventia*/
+.btnEventia{
+  background-color: rgb(0, 0, 78) !important;
+  color:white !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+.btnEventia2{
+  background-color: rgb(82, 50, 3) !important;
+  color:white !important;
+  font-weight: bold !important;
+  font-size: 15px !important;
+}
+
+/* Página de inicio */
 #cta {
   position: relative;
   text-align: center;
   top: 17vh;
   background-color: rgba(30, 39, 4, 0.658);
   width:65%;
-  height: 30%;
+  height: 25%;
   border-radius: 30px;
   padding: 20px;
   position: absolute;
-  margin-top: 8%;
+  margin-top: 9%;
   z-index: 1;
 } 
 
@@ -80,8 +96,8 @@ code {
 }
 
 .button:hover{
-  color:white;
-  background-color:#41A8F8;
+  color:black;
+  background-color:#abdaad;
 }
 
 #cta h4 {
@@ -92,8 +108,6 @@ code {
 }
 
 .parallax {
-  /* background-image: url("http://padresformados.es/wp-content/uploads/2018/04/IMG-20180421-WA0035.jpg"); */
-  /* background-image: url("https://cdn.urgente24.com/sites/default/files/notas/2017/09/05/feria_0.jpg"); */
   background-color: black;
   min-height: 300px; 
   background-attachment: fixed;
@@ -106,8 +120,7 @@ code {
 }  
 
 .parallaxUser {
-  /* background-image: url("http://padresformados.es/wp-content/uploads/2018/04/IMG-20180421-WA0035.jpg"); */
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4w_aetPlOh9nz_bnNjiLDDvvjlIfFZdeku6kJIQLeq6NVUGGm");
+  background-image: url("https://res.cloudinary.com/perlavianey/image/upload/v1539457613/eventia/b1.jpg.jpg");
   min-height: 400px; 
   background-attachment: fixed;
   background-position: center;
@@ -159,6 +172,33 @@ code {
   width:100%;
 }
 
+/* Sesión */
+.eventosList{
+  color:black;
+  font-weight: bold;
+  margin-top:20px;
+  padding-left: 5%;
+}
+
+.login{
+  margin-top:5%;
+  margin-bottom:12%;
+}
+
+.sesion{
+  display: flex;
+  flex-direction: row;
+  margin-right: 80px;
+}
+
+.iconSesion{
+  color: rgb(109, 68, 7)
+}
+
+.iconSesion:hover{
+  color:#A7D14A;
+}
+
 /* Barra de navegación */
 
 .navbar {
@@ -188,13 +228,14 @@ code {
   padding:9px 20px;
   margin-right: 20px;
   border-radius: 5px;
-  background-color: #41A8F8;
+  background-color: rgb(109, 68, 7);
   font-size: 15px;
 }
 
 .navbar li:hover {
-  color:white;
-  background-color: rgb(109, 68, 7);
+  color:black;
+  background-color:#A7D14A;
+
 }
 
 .navbar ul:nth-child(2) {
@@ -220,7 +261,8 @@ code {
 .contentInicio{
   margin:0;
 }
- 
+
+/* Footer */
 .footer {
   padding:2%;
   color: black;
@@ -235,8 +277,18 @@ code {
   flex-direction: row;
   justify-content: space-around;
 }
+
+/* Eventos */
 .father{
   margin-top: 5%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.fatherArticle{
+  margin-top: 1%;
   display:flex;
   flex-direction: row;
   justify-content: space-around;
@@ -256,7 +308,7 @@ code {
 }
 
 .eventDetail{
-  padding-bottom: 8%;
+  padding-bottom: 3%;
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -346,15 +398,20 @@ code {
   margin-top:1% !important;
   text-align: center;
   width:20vw !important;
+  min-height: 400px !important;
   border:2px solid rgba(0, 0, 0, 0.473) !important;
 }
 
 .ant-card-meta-title {
   white-space: normal !important;
-  text-align: center !important;  
+  text-align: center !important;
+  min-height: 43px !important;
+  max-height: 43px !important;  
 }
 
 .ant-card-head{
+  min-height: 80px !important;
+  max-height: 80px !important;
   border-radius: 1px !important;
   background-color: rgba(49, 31, 3, 0.849) !important;
   color:white !important;
@@ -366,6 +423,7 @@ code {
   display: block !important;
   font-weight: bold !important;
 }
+
 .eventCard img{
   width:100%;
   height:200px;
@@ -374,6 +432,7 @@ code {
   margin-right: auto;
 }
 
+/* Usuario */
 .userCard{
   margin-left:auto !important;
   margin-right:auto !important;
@@ -390,8 +449,10 @@ code {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 50%;
 }
 
+/* Artículos */
 .newEvent{
   width:40%;
   padding: 3%;
@@ -410,6 +471,7 @@ code {
   width:40%;
   text-align: center;
   border-radius: 15px;
+  font-weight: bold;
 }
 
 .titleMain{
@@ -434,11 +496,12 @@ code {
 .titleMain3{
   margin-top: 1.5%;
   margin-bottom: 2%;
-  background-color: #41A8F8;
+  background-color: #A7D14A;
   width:100%;
   text-align: center;
   font-size: 25px;
   font-weight: bolder;
+  padding:10px;
 }
 
 .titleLogin{
@@ -447,6 +510,7 @@ code {
   width:42.5%;
   text-align: center;
   border-radius: 15px;
+  font-weight: bold;
 }
 
 .eventPadre{
@@ -467,26 +531,11 @@ code {
 
 }
 
-.login{
-  margin-top:5%;
-  margin-bottom:12%;
-}
+/* Compra */
 
-.eventosList{
-  color:black;
-  font-weight: bold;
-  margin-top:20px;
-  padding-left: 5%;
-}
-
-.sesion{
-  display: flex;
-  flex-direction: row;
-  margin-right: 80px;
-}
-
-.iconSesion:hover{
-  color: rgb(109, 68, 7)
+.ant-steps-item-icon{
+  background:navy!important;
+  color:white !important;
 }
 
 .steps-content {
@@ -560,18 +609,18 @@ code {
   font-weight: bold !important;
 }
 
-.tituloInicio>h4{
-  font-size: 23px;
-}
-
 .tituloInicio{
   background-color: #A7D14A;
-  padding: 5px;
-  padding-bottom: 0.5px;
+  padding-top: 8px;
+  padding-bottom: 0.1px;
   width:100%;
   text-align: center;
   font-size: 25px;
   font-weight: bolder;
+}
+
+.tituloInicio>h4{
+  font-size: 23px;
 }
 
 .newCompra{
@@ -586,4 +635,18 @@ code {
 
 #noBoletos{
   text-align: right;
+}
+
+.myEvent{
+  width: 50vw;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin:10px;
+}
+
+.myEvent img{
+  width:80px;
+  height:80px;
+  border-radius: 50%;
 }
