@@ -6,7 +6,7 @@ import  MyProfileDisplay from './MyProfileDisplay'
 
 message.config({top: 400, duration: 2, maxCount: 3,});
 
- class myProfileContainer extends Component{
+ class MyProfileContainer extends Component{
 
  state = {
     orders:[]
@@ -14,12 +14,19 @@ message.config({top: 400, duration: 2, maxCount: 3,});
 
  componentWillMount =()=>{
     const idUser=this.props.match.params.id 
-    getOrders(idUser)
-    .then(orders => {
-        console.log(orders)
-        this.setState({orders:orders.data})
-    })
-    .catch(e=>{console.log(e)})
+    const localStorageUser=JSON.parse(localStorage.getItem('user'))
+    if(!localStorageUser) return this.props.history.push(`/login`)
+    if(localStorageUser._id!==idUser){
+        this.props.history.push(`/inicio`)
+    }
+    else{
+        getOrders(localStorageUser._id)
+        .then(orders => {
+            console.log(orders.data)
+            return this.setState({orders:orders.data})
+        })
+        .catch(e=>{console.log(e)})
+    }
  }
 
     render(){
@@ -31,4 +38,4 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     }
 }
 
-export default myProfileContainer
+export default MyProfileContainer

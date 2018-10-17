@@ -62,8 +62,14 @@ message.config({top: 200, duration: 1, maxCount: 3,});
     const {order} = this.state
     createOrder(order)
         .then(order=>{
-            message.success("Compra exitosa")
-            return this.props.history.push(`/myProfile/`+ JSON.parse(localStorage.getItem('user'))._id)
+            const success = () => {
+                message.loading('Procesando pago...', 2.5)
+                  .then(() => message.success('Compra exitosa. Generando comprobante...', 2.5))
+                  .then(() => {
+                      return this.props.history.push(`/orderDetail/`+ order.data._id)
+                  })
+              };
+              success()
         }).catch(e=>{
             console.log(e)
         })

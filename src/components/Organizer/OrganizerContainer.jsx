@@ -13,25 +13,32 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     events:[],
     eventsPasados:[],
     eventsFuturos:[],
-    loading:false
+    loading:false,
+    organizadorData:{}
  }
 
  componentWillMount =()=>{
-    getEvents()
-    .then(events => {
-        return this.setState({events:events.data})
-    })
-    .catch(e=>{console.log(e)})
+    const localStorageUser=JSON.parse(localStorage.getItem('user'))
+    if(!localStorageUser) {        
+        return this.props.history.push(`/login`)
+    }
+    else{
+        getEvents()
+        .then(events => {
+            return this.setState({events:events.data, organizadorData:localStorageUser})
+        })
+        .catch(e=>{console.log(e)})
+    }
  }
-
- 
 
  redirectNewEvent =()=>{
     this.props.history.push('/newEvent')
  }
     render(){
+        
         return(
             <OrganizerDisplay 
+                organizadorData={this.state.organizadorData}
                 redirectNewEvent={this.redirectNewEvent}
                 events={this.state.events}
             />

@@ -5,8 +5,8 @@ import 'moment/locale/es';
 
 const { Meta } = Card;
 
-const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
-    const organizadorData = JSON.parse(localStorage.getItem('user'))                                    
+const OrganizerDisplay =({redirectNewEvent,events=[], organizadorData={}})=> {
+                                       
 
     return(
         <section className="eventPadreOrganizer">
@@ -48,7 +48,7 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
             </section>
 
             <h2 className="titleMain3">Mis compras en eventia</h2>
-            <Link to={`/myProfile/`+ (JSON.parse(localStorage.getItem('user'))._id)}><Button className="btnEventia" icon="plus-square"> Ir a mis Compras</Button></Link><br/><br/>
+            <Link to={`/myProfile/`+ organizadorData._id}><Button className="btnEventia" icon="plus-square"> Ir a mis Compras</Button></Link><br/><br/>
         </section>   
     )        
 }

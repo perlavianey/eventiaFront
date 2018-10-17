@@ -5,7 +5,6 @@ const url = 'http://localhost:3000/'
 //Crear una orden
 export const createOrder = (newOrderData) => {
     const token = localStorage.getItem('token')
-    
     return axios.post(url + "newOrder", newOrderData,{
         headers:{
             'Authorization':token
@@ -30,6 +29,15 @@ export const getOrders = (idUser) => {
     .then(orders=>{
         return orders
     })
+    .catch(error=>{
+        return error
+    })
+}
+
+//Trae una orden por ID
+export const getOrder = (orderId) => {
+    return axios.get(url + `getOrder/`+ orderId)
+    .then(order=>{return order})
     .catch(error=>{
         return error
     })

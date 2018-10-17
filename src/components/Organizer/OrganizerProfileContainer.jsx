@@ -14,11 +14,18 @@ message.config({top: 400, duration: 2, maxCount: 3,});
  }
 
  componentWillMount =()=>{
-    getUser(this.props.match.params.id)
-    .then(events => {
-        return this.setState({events:events.data})
-    })
-    .catch(e=>{console.log(e)})
+    const idUser=this.props.match.params.id 
+    const localStorageUser=JSON.parse(localStorage.getItem('user'))
+    if(localStorageUser._id!==idUser){
+        this.props.history.push(`/inicio`)
+    }
+    else{
+        getUser(localStorageUser._id)
+        .then(events => {
+            return this.setState({events:events.data})
+        })
+        .catch(e=>{console.log(e)})
+    }
  }
 
  

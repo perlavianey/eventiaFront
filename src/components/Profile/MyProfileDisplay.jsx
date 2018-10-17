@@ -18,23 +18,16 @@ const MyProfileDisplay =({orders=[]})=> {
             <section className="eventDetail">
                 <div className="father">
                 {orders.map((b, key)=>{
-                    return  <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} key={key}>
-                        <div className="myEvent">
-                            <h3>{b.event.name} </h3> 
-                            <img src={b.event.imageURL} alt="event_Pic"></img>
-                            <p className="folio"><b>FOLIO: </b><i>{b._id}</i></p>
-                            <p><b>Datos del evento: </b></p>
-                            <p><b>Fecha: </b>{b.event.date}      <b>Hora: </b>{b.event.schedule} hrs</p>
-                            <p><b>Lugar: </b>{b.event.place}</p><hr/>
-                            <p className="cuentaOrden"><b>RESUMEN DE COMPRA</b></p>
-                            <p className="cuentaOrden">Boletos: {b.boletos.quantity} --> $ {b.boletos.price || 0 * b.boletos.quantity || 0 } MXN</p>
-                            <div>{b.articles.map((c,key)=>{
-                                return <div  key={key}>
-                                    <p className="cuentaOrden"> {c.product.name} ({c.quantity}) --> {c.quantity*c.product.price} MXN</p>
-                                </div>
-                            })}</div>
-                        </div>
-                    </div>})}        
+                    return  <Link to={`/orderDetail/`+ b._id} key={key}><div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+                    <div className="myEvent">
+                        <h3>{b.event.name} </h3> 
+                        <img src={b.event.imageURL} alt="event_Pic"></img>
+                        <p className="folio"><b>FOLIO: </b><i>{b._id}</i></p>
+                        <p><b>Datos del evento: </b></p>
+                        <p><b>Fecha: </b>{b.event.date}      <b>Hora: </b>{b.event.schedule} hrs</p>
+                        <p><b>Lugar: </b>{b.event.place}</p>
+                    </div>
+                </div></Link>})}        
                 </div> 
             
                 <div className="adminEvento">

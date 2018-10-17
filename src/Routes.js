@@ -12,6 +12,8 @@ import EventDetOrgContainer from './components/Event/EventDetOrgContainer'
 import ArticleNewContainer from './components/Article/ArticleNewContainer'
 import ArticleDetOrgContainer from './components/Article/ArticleDetOrgContainer'
 import MyProfileContainer from './components/Profile/MyProfileContainer'
+import OrderContainer from './components/Order/OrderContainer'
+
 const Routes = () => {
     return(
         <Switch>
@@ -27,6 +29,7 @@ const Routes = () => {
             <Route exact path="/event/:id/newarticle" component={ArticleNewContainer}/>
             <Route exact path="/article/org/:id" component={ArticleDetOrgContainer}/>
             <Route exact path="/myProfile/:id" component={MyProfileContainer}/> 
+            <Route path="/orderDetail/:id" component={OrderContainer}/>
         </Switch>
     )
 }

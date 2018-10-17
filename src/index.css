@@ -652,8 +652,9 @@ code {
   border-radius: 15px;
   margin:5px;
   margin-bottom:25px;
-  min-height: 29vw;
+  min-height: 17vw;
   background-color: #eef5ebe7;
+  color:black;
 }
 
 .myEvent img{
@@ -684,4 +685,40 @@ code {
 
 .cuentaOrden{
   text-align: right;
+}
+
+.myOrder{
+  text-align: center;
+  width: 50vw;
+  padding: 10px;
+  border: 2px dashed black;
+  border-radius: 15px;
+  margin:5px;
+  min-height: 29vw;
+  background-color: #eef5ebe7;
+}
+
+.myOrder h5{
+  text-transform: uppercase;
+}
+
+.myOrder img{
+  width:250px;
+  height:200px;
+  border-radius: 30%;
+  margin:10px;
+  margin-right: 10px;
+  border:2px solid rgb(70, 43, 4);
+}
+
+.myOrder h2{
+  background-color: rgb(109, 68, 7) ;
+  color:white;
+  padding:3px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  width:95%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
