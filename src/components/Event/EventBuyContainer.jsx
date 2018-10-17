@@ -6,7 +6,7 @@ import {} from '../../services/authService'
 import EventBuyDisplay from './EventBuyDisplay'
 import {createOrder} from '../../services/orderService'
 
-message.config({top: 400, duration: 2, maxCount: 3,});
+message.config({top: 200, duration: 1, maxCount: 3,});
 
  class EventBuyContainer extends Component{
 
@@ -22,8 +22,21 @@ message.config({top: 400, duration: 2, maxCount: 3,});
  }
 
  next = () => {
-    let current = this.state.current + 1;
-    this.setState({ current });
+    let current = this.state.current
+    if(current===0){
+        let boletos=this.state.order.boletos
+        if(!boletos || boletos.quantity<1) {
+            return message.error("Debe seleccionar al menos un boleto para adquirir.")
+        }
+        else{
+            current++;
+            return this.setState({ current });
+        }
+    }
+    else{
+        current++;
+        return this.setState({ current });
+    }
   }
 
   prev = () => {
@@ -40,17 +53,15 @@ message.config({top: 400, duration: 2, maxCount: 3,});
   setEvent=()=>{
     const {order} = this.state
     order['event']=this.props.match.params.id
-    console.log(order['event'])
     this.setState({order})
   }
 
   handleSubmit=()=>{
     this.setUser()
     this.setEvent()
-
     const {order} = this.state
     createOrder(order)
-        .then(r=>{
+        .then(order=>{
             message.success("Compra exitosa")
             return this.props.history.push(`/myProfile/`+ JSON.parse(localStorage.getItem('user'))._id)
         }).catch(e=>{
@@ -58,6 +69,7 @@ message.config({top: 400, duration: 2, maxCount: 3,});
         })
 
   }
+
   handleBoletos=(e)=>{
     const {order, event} = this.state
     order['boletos'] = {quantity:e.target.value, price:event.priceTicket}
@@ -105,7 +117,6 @@ message.config({top: 400, duration: 2, maxCount: 3,});
     .catch(e=>{console.log(e)})
     this.setState.totalBoletos=0;
  }
-
 
     render(){
         const {show} = this.state

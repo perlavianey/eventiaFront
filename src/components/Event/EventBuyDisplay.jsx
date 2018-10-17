@@ -16,7 +16,7 @@ const steps = [{
     title: 'Pago',
     content: '',
   }, {
-    title: '¡Hecho!',
+    title: 'Confirmar',
     content: '',
   }];
 
@@ -40,7 +40,7 @@ const eventBuyDisplay = ({totalBoletos,totalArticles,event,current,next,prev,onC
                 <div className="steps-content">
                 
                 {current===0? 
-                    <form onSubmit={onSubmit} className="newCompra" >
+                    <div className="newCompra" >
                         <h5><i>Costo del boleto: ${event.priceTicket} MXN</i></h5><hr/><br/>
                         <b>¿Cuántos boletos deseas?</b><span>   </span>
                         <Input name="noBoletos"
@@ -52,10 +52,9 @@ const eventBuyDisplay = ({totalBoletos,totalArticles,event,current,next,prev,onC
                             defaultValue="0"
                             style={{width:'12%'}}
                             required={true}
-                            />
-                        <br/><br/><hr/><br/><br/> 
+                            /><br/><br/><hr/><br/><br/> 
                         <p id="cto"><b>{`Total: $`+ parseFloat(totalBoletos) + ` MXN (IVA incluído)`}</b></p><br/><br/>
-                    </form>
+                    </div>
                 :current===1?
                     <div>
                         {
@@ -115,7 +114,7 @@ const eventBuyDisplay = ({totalBoletos,totalArticles,event,current,next,prev,onC
                         </form>   
                     </div>  
                 :
-                    <h3>¿Finalizar compra?</h3>
+                    <h3>¿Confirmar compra?</h3>
                 }
                 </div><br></br>
                 <div className="steps-action">
@@ -125,7 +124,7 @@ const eventBuyDisplay = ({totalBoletos,totalArticles,event,current,next,prev,onC
                 }
                 {
                     current === steps.length - 1
-                    && <Button type="primary" className="btnEventia2" onClick={handleSubmit}>Finalizar</Button>
+                    && <Button type="primary" className="btnEventia2" onClick={handleSubmit}>Confirmar</Button>
                 }
                 {
                     current > 0

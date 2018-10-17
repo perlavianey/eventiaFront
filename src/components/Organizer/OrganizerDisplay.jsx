@@ -19,12 +19,11 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                 cover={<img alt="eventPic" src={organizadorData.photoURL}  style={{width:'50%', height:'50%', paddingTop:'5%'}} />}> 
                 <hr/>
                 <Meta
-                    title={organizadorData.name +`  `+organizadorData.lastName} //{organizadorData.lastName}
+                    title={organizadorData.name +`  `+organizadorData.lastName} 
                     description={organizadorData.email}/> <br/> <br/>
                     <Link to={`/organizerProfile/edit/`+organizadorData._id}><Icon type="edit" theme="filled" style={{ fontSize: '20px', color: 'navy' }}/></Link>
                 </Card>
-            </section>
-            <br/>
+            </section><br/>
             
             <h2 className="titleMain3">Mis eventos organizados</h2>
             <Button onClick={redirectNewEvent} className="btnEventia" icon="plus-square"> Agregar Evento</Button>
@@ -38,22 +37,20 @@ const OrganizerDisplay =({redirectNewEvent,events=[]})=> {
                             title={b.name}
                             bordered='true'
                             cover={<img alt="eventPic" src={b.imageURL}/>}> 
-                                <Meta
-                                    title={b.place}
-                                    description={b.date+`, `+ b.schedule + `hrs.`}
-                                />
+                            <Meta
+                                title={b.place}
+                                description={b.date+`, `+ b.schedule + `hrs.`}
+                            />
                         </Card></Link>
                         })}        
                     </div> 
                 </section>
             </section>
-            <h2 className="titleMain3">Mis compras en eventia</h2>
-            <Link to={`/myProfile/`+ (JSON.parse(localStorage.getItem('user'))._id)}><Button className="btnEventia" icon="plus-square"> Ir a mis Compras</Button></Link>
- 
-        </section>
-        
-    )        
 
+            <h2 className="titleMain3">Mis compras en eventia</h2>
+            <Link to={`/myProfile/`+ (JSON.parse(localStorage.getItem('user'))._id)}><Button className="btnEventia" icon="plus-square"> Ir a mis Compras</Button></Link><br/><br/>
+        </section>   
+    )        
 }
 
 export default OrganizerDisplay

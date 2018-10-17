@@ -12,7 +12,7 @@ const format = 'HH:mm';
 const { Meta } = Card;
 
 
-const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onBack,onSubmit,loading,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{ 
+const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onSubmit,handleSelect,handleDate,handleHour,uploadPic,onChangeFile})=>{ 
     return(
         <div className="contentInicio">          
             <div className="white"></div><br/> <br/>
@@ -204,39 +204,34 @@ const EventDetOrgDisplay = ({showConfirm,event,articles=[],onChange,onBack,onSub
                 </div>
             </section>
         <hr/>
-
-        <section className="eventPadreOrganizer">
-            <h2 className="eventosList"><ins>Status de ventas de entradas:</ins></h2><br/>
-            <canvas width="200" height="200" id="canvas"></canvas>
-        </section>
-
-        <hr/>
         <section className="eventPadreOrganizer">
             <section><br/>
             <h2 style={{textAlign:'center'}}><b><ins>Articulos de este evento:</ins></b></h2>
-            <div className="father">
+            {
+                articles.length<1?
+                <div style={{marginBottom:"29%",display: 'flex', alignItems: 'center',flexDirection: 'column'}}>
+                    <h3>Este evento aún no tiene artículos para ofrecer <i className="far fa-frown"></i></h3><br/>
+                    <Link to={`/event/${event._id}/newarticle`}><Button className="btnEventia" icon="plus-square"> Agrega artículo </Button></Link>
+                </div>
+                :
+                <div className="father">
                 {articles.map((b, key)=>{
-
-            return  <Link to={`/article/org/${b._id}`} key={key}>
+                return  <Link to={`/article/org/${b._id}`} key={key}>
                 <Card className="eventCard"
-                        hoverable
-                        title={b.name}
-                        bordered='true'
-                        cover={<img alt="articlePic" src={b.imageURL}/>}> 
-                            <Meta
-                                title={b.sold}
-                                description={`Piezas a vender: `+ b.stock +` - Precio: $`+ b.price +` MXN`}
-                            />
-                    </Card></Link>
-                    })}        
+                    hoverable
+                    title={b.name}
+                    bordered='true'
+                    cover={<img alt="articlePic" src={b.imageURL}/>}> 
+                    <Meta
+                        title={b.sold}
+                        description={`Piezas a vender: `+ b.stock +` - Precio: $`+ b.price +` MXN`}
+                    />
+                </Card></Link>})}        
             </div> 
+            }
             </section>
-            </section>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-            <script src="./chartSoldEvent.js"></script>            
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossOrigin="anonymous"></link>
-        </div>
-    )
-}
+        </section>
+    </div>
+)}
 
 export default EventDetOrgDisplay
